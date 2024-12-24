@@ -7,7 +7,7 @@ public class test999 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ‚à‚Ý‚¶‚Î’Ç‰Á.
+        // 999 : ‚à‚Ý‚¶‚Î’Ç‰Á.
     }
 
     // Update is called once per frame
