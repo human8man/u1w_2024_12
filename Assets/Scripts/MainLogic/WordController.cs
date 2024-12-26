@@ -5,70 +5,67 @@ using UnityEngine.UI;
 
 public class WordController : MonoBehaviour
 {
-    const int BUTTON_MAX = 3;//ƒ{ƒ^ƒ“Å‘å”.
+    const int BUTTON_MAX = 3; // ãƒœã‚¿ãƒ³ã®æœ€å¤§æ•°.
 
-    [SerializeField] private List<string> words;// ƒ{ƒ^ƒ“‚É•\¦‚·‚é’PŒêƒŠƒXƒg.
-    [SerializeField] private Button[] buttons = new Button[BUTTON_MAX];// ƒ{ƒ^ƒ“.
-    [SerializeField] private Text nonWordText;// ››‚ª–³‚¢ƒQ[ƒ€‚Æ•\¦‚·‚éTextUI.
+    [SerializeField] private List<string> words; // ãƒœã‚¿ãƒ³ã«è¡¨ç¤ºã™ã‚‹å˜èªãƒªã‚¹ãƒˆ.
+    [SerializeField] private Button[] buttons = new Button[BUTTON_MAX]; // ãƒœã‚¿ãƒ³.
+    [SerializeField] private Text nonWordText; // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–å˜èªã‚’ã‚²ãƒ¼ãƒ ç”»é¢ã«è¡¨ç¤ºã™ã‚‹TextUI.
 
-    private string inactiveWord = "››"; // ”ñƒAƒNƒeƒBƒuó‘Ô‚Ì’PŒê.
-    private string originalText = "››‚ª–³‚¢ƒQ[ƒ€";// ƒeƒLƒXƒgƒtƒH[ƒ}ƒbƒg.
-    private int lastClickedButtonIndex;// ÅŒã‚ÉƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“”Ô†.
+    private string inactiveWord = "ãªã—"; // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–å˜èªã®åˆæœŸå€¤.
+    private string originalText = "ç¾åœ¨ã®éã‚¢ã‚¯ãƒ†ã‚£ãƒ–å˜èª:"; // ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ.
+    private int lastClickedButtonIndex; // æœ€å¾Œã«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãƒœã‚¿ãƒ³ã®ç•ªå·.
 
     private void Start()
     {
-        // ƒ{ƒ^ƒ“‚ÉƒŠƒXƒi[‚ğ’Ç‰Á.
-        for(int i = 0;i < BUTTON_MAX; i++ )
+        // ãƒœã‚¿ãƒ³ã«ãƒªã‚¹ãƒŠãƒ¼ã‚’è¿½åŠ .
+        for (int i = 0; i < BUTTON_MAX; i++)
         {
             int index = i;
             buttons[index].onClick.AddListener(() => OnClickButton(index));
         }
-
     }
 
     private void Update()
     {
-        // ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğXV.
+        // ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°.
         for (int i = 0; i < BUTTON_MAX; i++)
         {
             UpdateButtonText(i, words[i]);
         }
 
-        // ”ñƒAƒNƒeƒBƒuó‘Ô‚Ì’PŒê‚ğUI‚É”½‰f.
-        nonWordText.text = originalText.Replace("››", inactiveWord);
+        // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–å˜èªã®æƒ…å ±ã‚’UIã«åæ˜ .
+        nonWordText.text = originalText.Replace("ãªã—", inactiveWord);
     }
 
-   
-    // ƒ{ƒ^ƒ“ƒNƒŠƒbƒN‚Ìˆ—.
+    // ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸæ™‚ã®å‡¦ç†.
     private void OnClickButton(int index)
     {
-        Debug.Log("‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“:" + index);
+        Debug.Log("ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãƒœã‚¿ãƒ³:" + index);
 
         Text currentText = GetButtonText(index);
         Text lastText = GetButtonText(lastClickedButtonIndex);
 
         StageObject[] stageObjects = FindObjectsOfType<StageObject>(true);
 
-        // ‘O‰ñ‚Æ¡‰ñ‚Ìƒ{ƒ^ƒ“‚ªˆÙ‚È‚éê‡.
+        // å‰å›ã¨ä»Šå›ã®ãƒœã‚¿ãƒ³ãŒç•°ãªã‚‹å ´åˆ.
         if (currentText.text != lastText.text)
         {
-            ToggleObjects(stageObjects, lastText.text, true);       // ‘O‰ñ‚Ì’PŒê‚ğƒAƒNƒeƒBƒu‰».
-            ToggleObjects(stageObjects, currentText.text, false);   // ¡‰ñ‚Ì’PŒê‚ğØ‚è‘Ö‚¦.
+            ToggleObjects(stageObjects, lastText.text, true);       // å‰å›ã®å˜èªã‚’ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–.
+            ToggleObjects(stageObjects, currentText.text, false);  // ä»Šå›ã®å˜èªã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–.
             inactiveWord = currentText.text;
         }
         else
         {
-            // “¯‚¶ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½ê‡.
+            // åŒã˜ãƒœã‚¿ãƒ³ãŒå†ã³ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸå ´åˆ.
             ToggleObjects(stageObjects, currentText.text, false);
-            inactiveWord = stageObjects[0].IsActive ? "››" : currentText.text;
+            inactiveWord = stageObjects[0].IsActive ? "ãªã—" : currentText.text;
         }
 
-        // ÅŒã‚ÉƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“”Ô†‚ğ‘Ş”ğ.
+        // æœ€å¾Œã«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãƒœã‚¿ãƒ³ã®ç•ªå·ã‚’æ›´æ–°.
         lastClickedButtonIndex = index;
     }
 
-
-    //  ƒIƒuƒWƒFƒNƒg‚Ìó‘ÔØ‚è‘Ö‚¦.
+    // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®çŠ¶æ…‹ã‚’åˆ‡ã‚Šæ›¿ãˆ.
     private void ToggleObjects(StageObject[] objects, string word, bool activate)
     {
         foreach (var obj in objects)
@@ -81,33 +78,30 @@ public class WordController : MonoBehaviour
         }
     }
 
-
-    // ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒgXV.
+    // ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°.
     private void UpdateButtonText(int index, string text)
     {
         Text buttonText = GetButtonText(index);
         buttonText.text = text;
     }
 
-
-    // ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğæ“¾.
+    // ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—.
     private Text GetButtonText(int index)
     {
         return buttons[index].transform.GetChild(0).GetComponent<Text>();
     }
 
-
-    // ’PŒêƒŠƒXƒg‚É’Ç‰Á.
+    // å˜èªãƒªã‚¹ãƒˆã«è¿½åŠ .
     public void AddWord(string word)
     {
         if (words.Contains(word))
         {
-            Debug.Log("’PŒê" + word + "‚ÍŠù‚ÉƒŠƒXƒg‚É‘¶İ‚µ‚Ä‚¢‚é‚½‚ßA’Ç‰Á‚µ‚Ü‚¹‚ñ‚Å‚µ‚½B");
+            Debug.Log("å˜èª " + word + " ã¯æ—¢ã«ãƒªã‚¹ãƒˆã«å­˜åœ¨ã™ã‚‹ãŸã‚ã€è¿½åŠ ã§ãã¾ã›ã‚“ã€‚");
             return;
         }
 
-        // ’PŒê‚Ì’Ç‰Á.
+        // å˜èªã‚’è¿½åŠ .
         words.Add(word);
-        Debug.Log("’PŒê" + word + "‚ğƒŠƒXƒg‚É’Ç‰Á‚µ‚Ü‚µ‚½B");
+        Debug.Log("å˜èª " + word + " ã‚’ãƒªã‚¹ãƒˆã«è¿½åŠ ã—ã¾ã—ãŸã€‚");
     }
 }
