@@ -1,6 +1,6 @@
 /**
- * @file Menu.cs
- * @brief メニュー画面
+ * @file PauseMenu.cs
+ * @brief ポーズメニュー画面
  * @author Hara
  * @date 2024/12/26
  */
@@ -10,21 +10,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// メニュー画面
+/// ポーズメニュー画面
 /// </summary>
-public class Menu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     #region 定数
 
     /// <summary>
-    /// メニュー画面のシーン名
+    /// ポーズメニュー画面のシーン名
     /// </summary>
-    private const string MENU_SCENE_NAME = "Menu";
+    private const string PAUSE_MENU_SCENE_NAME = "PauseMenu";
 
     /// <summary>
     /// ステージ選択画面のシーン名
     /// </summary>
-    private const string STAGE_SELECT_SCENE_NAME = "StageSelect";
+    private const string STAGE_SELECT_SCENE_NAME = "Hara"; // 仮名
 
     #endregion
 
@@ -93,11 +93,11 @@ public class Menu : MonoBehaviour
 
     //----------------------------------------------------
     /// <summary>
-    /// オプション画面を閉じる
+    /// ポーズメニュー画面を閉じる
     /// </summary>
     private void CloseOptionMenu()
     {
-        SceneManager.UnloadSceneAsync(MENU_SCENE_NAME);
+        SceneManager.UnloadSceneAsync(PAUSE_MENU_SCENE_NAME);
     }
     //----------------------------------------------------
 }
