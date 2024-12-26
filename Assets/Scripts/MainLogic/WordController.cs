@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WordController : MonoBehaviour
 {
+    // ワードコントローラー.
     const int BUTTON_MAX = 3; // ボタンの最大数.
 
     [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
