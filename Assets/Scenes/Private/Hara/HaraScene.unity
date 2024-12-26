@@ -450,8 +450,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1663371858}
   - {fileID: 1378688922}
+  - {fileID: 1663371858}
   m_Father: {fileID: 233645979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -579,7 +579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30B9\u30C6\u30FC\u30B8\u9078\u629E\u3078"
 --- !u!222 &820302471
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30B2\u30FC\u30E0\u306B\u623B\u308B"
 --- !u!222 &1820646522
 CanvasRenderer:
   m_ObjectHideFlags: 0
