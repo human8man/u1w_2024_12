@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class StageObject : MonoBehaviour
@@ -8,77 +10,116 @@ public class StageObject : MonoBehaviour
    [System.Serializable]
     private struct WordList
     {
-        public string mainWord;// ƒIƒu‚¦ƒWƒFƒNƒg‚ÌƒƒCƒ“‚Æ‚È‚é’PŒê.
-        public List<string> containedWords;// ƒIƒuƒWƒFƒNƒg“à‚ÉŠÜ‚Ü‚ê‚é’PŒê.
+        public string mainWord;             // ã‚ªãƒ–ãˆã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¡ã‚¤ãƒ³ã¨ãªã‚‹å˜èª.
+        public List<string> containedWords; // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå†…ã«å«ã¾ã‚Œã‚‹å˜èª.
     }
 
-    [SerializeField, Tooltip("’PŒêƒŠƒXƒg")]
+    [SerializeField, Tooltip("å˜èªãƒªã‚¹ãƒˆ")]
     private WordList wordList;
 
-    [SerializeField,Tooltip("G‚ê‚½‚ç€‚Ê‚©‚Ìİ’è")]
+    [SerializeField,Tooltip("è§¦ã‚ŒãŸã‚‰æ­»ã¬ã‹ã®è¨­å®š")]
     private bool isDanger;
 
-    private bool isActive = true; // ƒIƒuƒWƒFƒNƒg‚ªƒAƒNƒeƒBƒu‚©‚Ç‚¤‚©
+    private bool isActive = true;// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‹ã©ã†ã‹.
 
-    [SerializeField,Tooltip("ƒeƒLƒXƒg‚ÌƒvƒŒƒnƒu")]
-    private Text textPrefab;                // ƒeƒLƒXƒgƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é‚½‚ß‚ÌPrefab.
-    private Text mainWordTextInstance;      // ƒƒCƒ“’PŒê‚ÌƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX.
-    private Text wordsCountTextInstance;    // ŠÜ‚Ü‚ê‚Ä‚¢‚é’PŒê‚Ì”‚ğ•\¦‚·‚éƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX.
+    [SerializeField,Tooltip("ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ—ãƒ¬ãƒãƒ–")]
+    private Text textPrefab;
 
+    private List<Text> containedWordsCountTexts = new List<Text>();// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å«ã¾ã‚Œã‚‹å˜èªæ•°ã®ãƒ†ã‚­ã‚¹ãƒˆ.
 
     void Start()
     {
-        // ƒV[ƒ““à‚ÌCanvas‚ğæ“¾.
-        var _canvas = FindObjectOfType<Canvas>().transform.Find("ObjectWord");
-
-        // ƒ[ƒ‹ƒhÀ•W‚ğƒXƒNƒŠ[ƒ“À•W‚É•ÏŠ·.
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-
-
-        // ƒƒCƒ“’PŒêƒeƒLƒXƒg‚Æ’PŒê”ƒeƒLƒXƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬.
-        mainWordTextInstance = Instantiate(textPrefab, screenPosition, Quaternion.identity);
-        wordsCountTextInstance = Instantiate(textPrefab, screenPosition, Quaternion.identity);
-
-
-        // ƒeƒLƒXƒg‚Ìe‚ğCanvas‚Éİ’è.
-        mainWordTextInstance.transform.SetParent(_canvas.transform);
-        wordsCountTextInstance.transform.SetParent(_canvas.transform);
-
-
-        // ƒeƒLƒXƒg“à—e‚ğİ’è.
-        mainWordTextInstance.text = wordList.mainWord;
-        wordsCountTextInstance.text = wordList.containedWords.Count.ToString();
-
-
-        // ƒIƒuƒWƒFƒNƒg‚ÉŠÜ‚Ü‚ê‚é’PŒê”ƒeƒLƒXƒg‚ÌˆÊ’u‚ğİ’è.
-        SetWordCountTextPosition();
+        // å«ã¾ã‚Œã‚‹å˜èªæ•°ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’ä½œæˆ.
+        CreateContainedWordsCountTexts();
     }
 
-
-    // ƒIƒuƒWƒFƒNƒg‚ÉŠÜ‚Ü‚ê‚é’PŒê”ƒeƒLƒXƒg‚ÌˆÊ’u‚ğİ’è.
-    private void SetWordCountTextPosition()
+    void Update()
     {
-        var sRenderer = GetComponent<SpriteRenderer>();
-        Vector3 size = sRenderer.bounds.size;
-
-
-        // ƒIƒuƒWƒFƒNƒg‚Ì¶ã‚ÌˆÊ’u‚ğŒvZ.
-        Vector3 topLeftWorldPosition    = transform.position + new Vector3(-size.x * 0.5f, size.y * 0.5f, 0.0f);
-        Vector3 topLeftScreenPosition   = Camera.main.WorldToScreenPoint(topLeftWorldPosition);
-
-        // ’PŒê”ƒeƒLƒXƒg‚ÌˆÊ’u‚ğXV.
-        wordsCountTextInstance.transform.position = topLeftScreenPosition;
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å«ã¾ã‚Œã‚‹å˜èªæ•°ãƒ†ã‚­ã‚¹ãƒˆã®ä½ç½®ã‚’æ›´æ–°.
+        UpdateWordCountTextPosition();
     }
 
 
-    // w’è‚µ‚½’PŒê‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©”»’è.
+    // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å«ã¾ã‚Œã‚‹å˜èªæ•°ãƒ†ã‚­ã‚¹ãƒˆã‚’ä½œæˆ.
+    private void CreateContainedWordsCountTexts()
+    {
+        // Tilemapã‚’å–å¾—.
+        Tilemap tilemap = GetComponent<Tilemap>();
+        BoundsInt bounds = tilemap.cellBounds;
+
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
+
+                // æŒ‡å®šåº§æ¨™ã®ã‚¿ã‚¤ãƒ«ã‚’å–å¾—.
+                TileBase tile = tilemap.GetTile(cellPosition);
+
+                // ã‚¿ã‚¤ãƒ«ãŒç„¡ã„ãªã‚‰ã‚¹ã‚­ãƒƒãƒ—.
+                if (tile == null) { continue; }
+
+                // ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆ
+                Text textInstance = Instantiate(textPrefab, transform.position, Quaternion.identity);
+                textInstance.text = wordList.containedWords.Count.ToString();
+
+                // Canvasã«è¿½åŠ 
+                var canvas = FindObjectOfType<Canvas>().transform.Find("ObjectWord");
+                textInstance.transform.SetParent(canvas.transform);
+
+                // Listã«è¿½åŠ .
+                containedWordsCountTexts.Add(textInstance);
+            }
+        }
+    }
+
+
+    // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å«ã¾ã‚Œã‚‹å˜èªæ•°ãƒ†ã‚­ã‚¹ãƒˆã®ä½ç½®ã‚’æ›´æ–°.
+    private void UpdateWordCountTextPosition()
+    {
+        // Tilemapã‚’å–å¾—.
+        Tilemap tilemap = GetComponent<Tilemap>();
+        BoundsInt bounds = tilemap.cellBounds;
+        int index = 0;// æ›´æ–°ç”¨è¦ç´ ç•ªå·.
+
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
+
+                // æŒ‡å®šåº§æ¨™ã®ã‚¿ã‚¤ãƒ«ã‚’å–å¾—.
+                TileBase tile = tilemap.GetTile(cellPosition);
+
+                // ã‚¿ã‚¤ãƒ«ãŒç„¡ã„ãªã‚‰ã‚¹ã‚­ãƒƒãƒ—.
+                if(tile == null) { continue; }
+
+                // ã‚¿ã‚¤ãƒ«ã®ä¸­å¿ƒä½ç½®ã‚’å–å¾—.
+                Vector3 tileCenterWorldPosition = tilemap.GetCellCenterWorld(cellPosition);
+
+                // ã‚¿ã‚¤ãƒ«ã®å·¦ä¸Šã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã«èª¿æ•´.
+                Vector3 tileTopLeftWorldPosition = tileCenterWorldPosition + new Vector3(-tilemap.cellSize.x * 0.5f, tilemap.cellSize.y * 0.5f, 0);
+
+                // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã«å¤‰æ›.
+                Vector3 screenPosition = Camera.main.WorldToScreenPoint(tileTopLeftWorldPosition);
+
+                // åº§æ¨™ã‚’é©é‡.
+                containedWordsCountTexts[index].transform.position = screenPosition;
+
+                index++;
+            }
+        }
+    }
+
+
+    // æŒ‡å®šã—ãŸå˜èªãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®š.
     public bool IsWordContained(string targetWord)
     {
         return wordList.containedWords.Contains(targetWord);
     }
 
 
-    // ƒIƒuƒWƒFƒNƒg‚ÌƒAƒNƒeƒBƒuó‘Ô‚ğİ’èEæ“¾‚·‚éƒvƒƒpƒeƒB.
+    // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã‚’è¨­å®šãƒ»å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£.
     public bool IsActive
     {
         get { return isActive; }
