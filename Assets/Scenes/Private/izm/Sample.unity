@@ -1333,7 +1333,6 @@ MonoBehaviour:
     - "\u6C34"
     - "\u6DB2\u4F53"
   isDanger: 0
-  textPrefab: {fileID: 1562077748196170785, guid: ccb689f9699855f42bdd0525bdb46faf, type: 3}
 --- !u!114 &1310580807167738947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,7 +1351,6 @@ MonoBehaviour:
     - "\u30DE\u30B0\u30DE"
     - "\u6DB2\u4F53"
   isDanger: 0
-  textPrefab: {fileID: 1562077748196170785, guid: ccb689f9699855f42bdd0525bdb46faf, type: 3}
 --- !u!1839735485 &1722027983022859174
 Tilemap:
   m_ObjectHideFlags: 0
@@ -1808,7 +1806,6 @@ MonoBehaviour:
     containedWords:
     - "\u77F3"
   isDanger: 0
-  textPrefab: {fileID: 1562077748196170785, guid: ccb689f9699855f42bdd0525bdb46faf, type: 3}
 --- !u!483693784 &2993998980460239557
 TilemapRenderer:
   m_ObjectHideFlags: 0
