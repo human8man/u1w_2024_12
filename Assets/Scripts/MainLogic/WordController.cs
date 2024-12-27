@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +32,7 @@ public class WordController : MonoBehaviour
         // ボタンのテキストを更新.
         for (int i = 0; i < BUTTON_MAX; i++)
         {
+            if (i >= words.Count) { break; }
             UpdateButtonText(i, words[i]);
         }
         
@@ -106,5 +108,12 @@ public class WordController : MonoBehaviour
         // 単語を追加.
         words.Add(word);
         Debug.Log("単語 " + word + " をリストに追加しました。");
+    }
+
+
+    // 現在の単語数を取得.
+    public int GetWordCount()
+    {
+        return words.Count;
     }
 }

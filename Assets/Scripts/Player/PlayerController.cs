@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer SpriteRenderer;
 
+    // 単語コントローラー.
+    [SerializeField]
+    private WordController wordController;
 
     // Start is called before the first frame update
     void Start()
@@ -96,5 +100,39 @@ public class PlayerController : MonoBehaviour
     void SetDeadFlg()
     {
         Dead = true;
+    }
+    
+    // 触れた単語を取得する.
+    void AddTouchedWord(StageObject obj)
+    {
+        foreach (string word in obj.GetContainedWords())
+        {
+            wordController.AddWord(word);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
+        if(stageObject != null)
+        {
+            if(stageObject.IsDanger)
+            {
+                // TODO:ここに死亡した時の処理を記述.
+
+            }
+            // 触れた単語を取得する.
+            AddTouchedWord(stageObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
+        if (stageObject != null)
+        {
+            // 触れた単語を取得する.
+            AddTouchedWord(stageObject);
+        }
     }
 }

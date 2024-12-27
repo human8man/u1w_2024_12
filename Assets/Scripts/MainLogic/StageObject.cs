@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -28,11 +29,22 @@ public class StageObject : MonoBehaviour
         return wordList.containedWords.Contains(targetWord);
     }
 
+    // 指定した単語が含まれている単語を取得.
+    public List<string> GetContainedWords()
+    {
+        return wordList.containedWords;
+    }
 
     // オブジェクトのアクティブ状態を設定・取得するプロパティ.
     public bool IsActive
     {
         get { return isActive; }
         set { isActive = value; }
+    }
+
+    // 触れたら死ぬかオブジェクトかの取得するプロパティ.
+    public bool IsDanger
+    {
+        get { return isDanger; }
     }
 }
