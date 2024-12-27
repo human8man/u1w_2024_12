@@ -11,8 +11,8 @@ public class WordController : MonoBehaviour
 
     [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
     [SerializeField] private Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
-    [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.    
-    
+    [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
+                                                          
     private string inactiveWord = "〇〇"; // 非アクティブ単語の初期値.
     private string originalText = "〇〇が無いゲーム"; // テキストフォーマット.
     private int lastClickedButtonIndex; // 最後にクリックされたボタンの番号.

@@ -128,7 +128,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
+        if (collision.gameObject.tag == "Goal")
+        {
+            GameManager.instance.IsClear = true;
+        }
+
+        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();        
         if (stageObject != null)
         {
             // 触れた単語を取得する.
