@@ -32,7 +32,7 @@ public class WordController : MonoBehaviour
         {
             UpdateButtonText(i, words[i]);
         }
-
+        
         // 非アクティブ単語の情報をUIに反映.
         nonWordText.text = originalText.Replace("なし", inactiveWord);
     }
@@ -52,6 +52,7 @@ public class WordController : MonoBehaviour
         {
             ToggleObjects(stageObjects, lastText.text, true);       // 前回の単語をアクティブ化.
             ToggleObjects(stageObjects, currentText.text, false);  // 今回の単語を非アクティブ化.
+
             inactiveWord = currentText.text;
         }
         else
@@ -65,7 +66,6 @@ public class WordController : MonoBehaviour
         lastClickedButtonIndex = index;
     }
 
-    // オブジェクトの状態を切り替え.
     private void ToggleObjects(StageObject[] objects, string word, bool activate)
     {
         foreach (var obj in objects)
@@ -85,11 +85,13 @@ public class WordController : MonoBehaviour
         buttonText.text = text;
     }
 
+
     // ボタンのテキストを取得.
     private Text GetButtonText(int index)
     {
         return buttons[index].transform.GetChild(0).GetComponent<Text>();
     }
+
 
     // 単語リストに追加.
     public void AddWord(string word)
