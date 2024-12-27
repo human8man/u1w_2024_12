@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3641411643917041713}
   - component: {fileID: 4063518520414836441}
   - component: {fileID: 7986444633909570807}
+  - component: {fileID: -4931200400154311239}
   m_Layer: 0
   m_Name: Magma
   m_TagString: Untagged
@@ -103,3 +104,24 @@ MonoBehaviour:
     - "\u30DE\u30B0\u30DE"
     - "\u6DB2\u4F53"
   isDanger: 0
+--- !u!95 &-4931200400154311239
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688139962553406987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f98f0684bf8d8d408a171b61a84531e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
