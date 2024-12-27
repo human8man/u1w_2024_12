@@ -54,10 +54,11 @@ public class PlayerController : MonoBehaviour
         Vector2 moveDirection   = new Vector2(horizontalMove, verticalMove);
         Rb.velocity = moveDirection * Speed;
 
-        // プレイヤーの画像変更.
+        // 移動による画像変更.
         ChangeSprite();
     }
 
+    // 移動による画像変更.
     void ChangeSprite()
     {
         // 入力の取得
