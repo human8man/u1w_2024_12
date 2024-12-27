@@ -5,25 +5,24 @@ using UnityEngine.UI;
 
 public class WordController : MonoBehaviour
 {
-    const int BUTTON_MAX = 3;//ボタン最大数.
+    const int BUTTON_MAX = 3; // ボタンの最大数.
 
-    [SerializeField] private List<string> words;// ボタンに表示する単語リスト.
-    [SerializeField] private Button[] buttons = new Button[BUTTON_MAX];// ボタン.
-    [SerializeField] private Text nonWordText;// ○○が無いゲームと表示するTextUI.
+    [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
+    [SerializeField] private Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
+    [SerializeField] private Text nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
 
-    private string inactiveWord = "○○"; // 非アクティブ状態の単語.
-    private string originalText = "○○が無いゲーム";// テキストフォーマット.
-    private int lastClickedButtonIndex;// 最後にクリックされたボタン番号.
+    private string inactiveWord = "なし"; // 非アクティブ単語の初期値.
+    private string originalText = "現在の非アクティブ単語:"; // テキストフォーマット.
+    private int lastClickedButtonIndex; // 最後にクリックされたボタンの番号.
 
     private void Start()
     {
         // ボタンにリスナーを追加.
-        for(int i = 0;i < BUTTON_MAX; i++ )
+        for (int i = 0; i < BUTTON_MAX; i++)
         {
             int index = i;
             buttons[index].onClick.AddListener(() => OnClickButton(index));
         }
-
     }
 
     private void Update()
@@ -33,16 +32,15 @@ public class WordController : MonoBehaviour
         {
             UpdateButtonText(i, words[i]);
         }
-
-        // 非アクティブ状態の単語をUIに反映.
-        nonWordText.text = originalText.Replace("○○", inactiveWord);
+        
+        // 非アクティブ単語の情報をUIに反映.
+        nonWordText.text = originalText.Replace("なし", inactiveWord);
     }
 
-   
-    // ボタンクリック時の処理.
+    // ボタンがクリックされた時の処理.
     private void OnClickButton(int index)
     {
-        Debug.Log("押されたボタン:" + index);
+        Debug.Log("クリックされたボタン:" + index);
 
         Text currentText = GetButtonText(index);
         Text lastText = GetButtonText(lastClickedButtonIndex);
@@ -53,22 +51,21 @@ public class WordController : MonoBehaviour
         if (currentText.text != lastText.text)
         {
             ToggleObjects(stageObjects, lastText.text, true);       // 前回の単語をアクティブ化.
-            ToggleObjects(stageObjects, currentText.text, false);   // 今回の単語を切り替え.
+            ToggleObjects(stageObjects, currentText.text, false);  // 今回の単語を非アクティブ化.
+
             inactiveWord = currentText.text;
         }
         else
         {
-            // 同じボタンが押された場合.
+            // 同じボタンが再びクリックされた場合.
             ToggleObjects(stageObjects, currentText.text, false);
-            inactiveWord = stageObjects[0].IsActive ? "○○" : currentText.text;
+            inactiveWord = stageObjects[0].IsActive ? "なし" : currentText.text;
         }
 
-        // 最後にクリックされたボタン番号を退避.
+        // 最後にクリックされたボタンの番号を更新.
         lastClickedButtonIndex = index;
     }
 
-
-    //  オブジェクトの状態切り替え.
     private void ToggleObjects(StageObject[] objects, string word, bool activate)
     {
         foreach (var obj in objects)
@@ -81,8 +78,7 @@ public class WordController : MonoBehaviour
         }
     }
 
-
-    // ボタンのテキスト更新.
+    // ボタンのテキストを更新.
     private void UpdateButtonText(int index, string text)
     {
         Text buttonText = GetButtonText(index);
@@ -102,12 +98,12 @@ public class WordController : MonoBehaviour
     {
         if (words.Contains(word))
         {
-            Debug.Log("単語" + word + "は既にリストに存在しているため、追加しませんでした。");
+            Debug.Log("単語 " + word + " は既にリストに存在するため、追加できません。");
             return;
         }
 
-        // 単語の追加.
+        // 単語を追加.
         words.Add(word);
-        Debug.Log("単語" + word + "をリストに追加しました。");
+        Debug.Log("単語 " + word + " をリストに追加しました。");
     }
 }
