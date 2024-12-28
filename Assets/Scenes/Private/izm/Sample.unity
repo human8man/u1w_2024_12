@@ -3769,6 +3769,7 @@ MonoBehaviour:
   - {fileID: 2063744592}
   nonWordText: {fileID: 1680100736}
   _stageLoader: {fileID: 171190795}
+  initInactiveWord: "\u3007\u3007"
 --- !u!1 &1602467044
 GameObject:
   m_ObjectHideFlags: 0
