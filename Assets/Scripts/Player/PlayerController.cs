@@ -26,6 +26,19 @@ public class PlayerController : MonoBehaviour
     // 単語コントローラー.
     [SerializeField]
     private WordController wordController;
+    
+    #region Stage5用の変数
+
+    public enum PlayerMoveState
+    {
+        Normal,
+        CannotMove,
+        MoveOnlyMoving,
+        MoveOnlyStopping
+    }
+
+    public PlayerMoveState NowPlayerState {get; set; } = PlayerMoveState.Normal;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -127,6 +140,11 @@ public class PlayerController : MonoBehaviour
             // 触れた単語を取得する.
             AddTouchedWord(stageObject);
         }
+
+        if (NowPlayerState == PlayerMoveState.MoveOnlyMoving)
+        {
+            NowPlayerState = PlayerMoveState.MoveOnlyStopping;
+        }
     }
 
     Vector2 GetAxis()
@@ -149,6 +167,42 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        //ステージ5専用処理
+        switch (NowPlayerState)
+        {
+            case PlayerMoveState.CannotMove:
+                horizontalMove = 0;
+                verticalMove = 0;
+                break;
+            case PlayerMoveState.MoveOnlyMoving:
+                horizontalMove = System.Math.Sign(Rb.velocity.x);
+                verticalMove = System.Math.Sign(Rb.velocity.y);
+                break;
+            case PlayerMoveState.MoveOnlyStopping:
+                horizontalMove = 0;
+                verticalMove = 0;
+                if (Input.GetKey(KeyCode.W))
+                {
+                    verticalMove = 1;
+                    NowPlayerState = PlayerMoveState.MoveOnlyMoving;
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    verticalMove = -1;
+                    NowPlayerState = PlayerMoveState.MoveOnlyMoving;
+                }
+                else if (Input.GetKey(KeyCode.A))
+                {
+                    horizontalMove = -1;
+                    NowPlayerState = PlayerMoveState.MoveOnlyMoving;
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    horizontalMove = 1;
+                    NowPlayerState = PlayerMoveState.MoveOnlyMoving;
+                }
+                break;
+        }
         return new Vector2(horizontalMove, verticalMove);
     }
 
