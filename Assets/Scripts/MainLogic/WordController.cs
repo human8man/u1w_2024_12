@@ -56,6 +56,12 @@ public class WordController : MonoBehaviour
         TextMeshProUGUI currentText = GetButtonText(index);
         TextMeshProUGUI lastText = GetButtonText(lastClickedButtonIndex);
 
+        // テキストが空なら処理しない.
+        if (string.IsNullOrEmpty(currentText.text))
+        {
+            return;
+        }
+
         StageObject[] stageObjects = _stageLoader.NowStageObjects;
 
         // 前回と今回のボタンが異なる場合.
