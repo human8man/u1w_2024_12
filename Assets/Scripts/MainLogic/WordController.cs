@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WordController : MonoBehaviour
+public class WordController : SingletonMonoBehaviour<WordController>
 {
     const int BUTTON_MAX = 3; // ボタンの最大数.
 
@@ -15,8 +15,8 @@ public class WordController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
     [SerializeField] StageLoader _stageLoader;
                                              
-    [SerializeField] private string initInactiveWord;
-    private string inactiveWord; // 非アクティブ単語の初期値.
+    public string initInactiveWord;
+    public string inactiveWord; // 非アクティブ単語の初期値.
     private string originalText = "が無いゲーム"; // テキストフォーマット.
     private int lastClickedButtonIndex; // 最後にクリックされたボタンの番号.
 
