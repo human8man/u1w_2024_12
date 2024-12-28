@@ -11,9 +11,10 @@ public class WordController : SingletonMonoBehaviour<WordController>
     const int BUTTON_MAX = 3; // ボタンの最大数.
 
     [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
-    [SerializeField] private Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
     [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
     [SerializeField] StageLoader _stageLoader;
+
+    public Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
                                              
     public string initInactiveWord;
     public string inactiveWord; // 非アクティブ単語の初期値.
@@ -67,7 +68,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
         // 前回と今回のボタンが異なる場合.
         if (currentText.text != lastText.text)
         {
-            ToggleObjects(stageObjects, lastText.text, true);       // 前回の単語をアクティブ化.
+            ToggleObjects(stageObjects, lastText.text, true);      // 前回の単語をアクティブ化.
             ToggleObjects(stageObjects, currentText.text, false);  // 今回の単語を非アクティブ化.
 
             inactiveWord = currentText.text;
@@ -76,6 +77,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
         {
             // 同じボタンが再びクリックされた場合.
             ToggleObjects(stageObjects, currentText.text, false);
+            ToggleObjects(stageObjects, initInactiveWord, false);
             inactiveWord = stageObjects[0].IsActive ? initInactiveWord : currentText.text;
         }
 
