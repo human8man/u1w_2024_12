@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Private/Fuu/StageSelect.unity
+    guid: 09f78eb50cddb1b47ab7a4c5d5c1925a
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Private/Fuu/Scene1.unity
+    guid: 6823aff7ae31150408eb759725206ca6
   m_configObjects: {}
