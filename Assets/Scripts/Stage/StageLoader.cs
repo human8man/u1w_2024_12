@@ -7,7 +7,9 @@ namespace Stage
     {
         // インデックスが表すステージのゲームオブジェクト
         [SerializeField] GameObject[] _stages;
+        [SerializeField] Vector2[] _playerBeginningPosition;
         [SerializeField] StageInfo _stageInfo;
+        [SerializeField] Transform _playerTransform;
 
         public StageObject[] NowStageObjects { get; private set; }
         
@@ -21,6 +23,7 @@ namespace Stage
             Debug.Log(stageNum);
             _stages[stageNum].SetActive(true);
             NowStageObjects = _stages[stageNum].GetComponentsInChildren<StageObject>(true);
+            _playerTransform.position = _playerBeginningPosition[stageNum];
         }
     }
 }
