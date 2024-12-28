@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using Stage;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -78,7 +80,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
             // 同じボタンが再びクリックされた場合.
             ToggleObjects(stageObjects, currentText.text, false);
             ToggleObjects(stageObjects, initInactiveWord, false);
-            inactiveWord = stageObjects[0].IsActive ? initInactiveWord : currentText.text;
+            inactiveWord = IsObjectActive(stageObjects, currentText.text) ? initInactiveWord : currentText.text;
         }
 
         // 最後にクリックされたボタンの番号を更新.
@@ -131,5 +133,18 @@ public class WordController : SingletonMonoBehaviour<WordController>
     public int GetWordCount()
     {
         return words.Count;
+    }
+
+    // 指定した単語オブジェクトがアクティブか.
+    private bool IsObjectActive(StageObject[] objects,string word)
+    {
+        foreach (var obj in objects)
+        {
+            if (obj.IsWordContained(word))
+            {
+                return obj.IsActive;
+            }
+        }
+        return false;
     }
 }
