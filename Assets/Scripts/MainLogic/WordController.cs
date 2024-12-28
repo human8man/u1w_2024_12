@@ -14,9 +14,10 @@ public class WordController : MonoBehaviour
     [SerializeField] private Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
     [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
     [SerializeField] StageLoader _stageLoader;
-                                                          
-    private string inactiveWord = "〇〇"; // 非アクティブ単語の初期値.
-    private string originalText = "〇〇が無いゲーム"; // テキストフォーマット.
+                                             
+    [SerializeField] private string initInactiveWord;
+    private string inactiveWord; // 非アクティブ単語の初期値.
+    private string originalText = "が無いゲーム"; // テキストフォーマット.
     private int lastClickedButtonIndex; // 最後にクリックされたボタンの番号.
 
     private void Start()
@@ -27,6 +28,11 @@ public class WordController : MonoBehaviour
             int index = i;
             buttons[index].onClick.AddListener(() => OnClickButton(index));
         }
+
+        originalText = initInactiveWord + "が無いゲーム";
+        inactiveWord = initInactiveWord;
+        StageObject[] stageObjects = _stageLoader.NowStageObjects;
+        ToggleObjects(stageObjects, initInactiveWord, true);
     }
 
     private void Update()
@@ -39,7 +45,7 @@ public class WordController : MonoBehaviour
         }
         
         // 非アクティブ単語の情報をUIに反映.
-        nonWordText.text = originalText.Replace("〇〇", inactiveWord);
+        nonWordText.text = originalText.Replace(initInactiveWord, inactiveWord);
     }
 
     // ボタンがクリックされた時の処理.
@@ -64,7 +70,7 @@ public class WordController : MonoBehaviour
         {
             // 同じボタンが再びクリックされた場合.
             ToggleObjects(stageObjects, currentText.text, false);
-            inactiveWord = stageObjects[0].IsActive ? "〇〇" : currentText.text;
+            inactiveWord = stageObjects[0].IsActive ? initInactiveWord : currentText.text;
         }
 
         // 最後にクリックされたボタンの番号を更新.
