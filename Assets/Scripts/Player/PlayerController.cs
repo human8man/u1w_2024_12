@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
+            Debug.Log("クリアしたよおめでとう！");
             GameManager.instance.IsClear = true;
         }
 
