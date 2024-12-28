@@ -51,8 +51,9 @@ public class PlayerController : MonoBehaviour
     void KeyInput()
     {
         // 入力の取得
-        float horizontalMove    = Input.GetAxis("Horizontal");
-        float verticalMove      = Input.GetAxis("Vertical");
+        var axis = GetAxis();
+        float horizontalMove    = axis.x;
+        float verticalMove      = axis.y;
 
         // 移動処理
         Vector2 moveDirection   = new Vector2(horizontalMove, verticalMove);
@@ -66,8 +67,9 @@ public class PlayerController : MonoBehaviour
     void ChangeSprite()
     {
         // 入力の取得
-        float horizontalMove    = Input.GetAxis("Horizontal");
-        float verticalMove      = Input.GetAxis("Vertical");
+        var axis = GetAxis();
+        float horizontalMove    = axis.x;
+        float verticalMove      = axis.y;
 
         Vector2 nowVel          = Rb.velocity;
 
@@ -118,12 +120,36 @@ public class PlayerController : MonoBehaviour
         {
             if(stageObject.IsDanger)
             {
+                Debug.Log("死んだ");
                 // TODO:ここに死亡した時の処理を記述.
 
             }
             // 触れた単語を取得する.
             AddTouchedWord(stageObject);
         }
+    }
+
+    Vector2 GetAxis()
+    {
+        float horizontalMove    = Input.GetAxis("Horizontal");
+        float verticalMove      = Input.GetAxis("Vertical");
+        switch (WordController.Instance.inactiveWord)
+        {
+            case "W":
+                verticalMove = Mathf.Min(0, verticalMove);
+                break;
+            case "S":
+                verticalMove = Mathf.Max(0, verticalMove);
+                break;
+            case "A":
+                horizontalMove = Mathf.Max(0, horizontalMove);
+                break;
+            case "D":
+                horizontalMove = Mathf.Min(0, horizontalMove);
+                break;
+        }
+
+        return new Vector2(horizontalMove, verticalMove);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
