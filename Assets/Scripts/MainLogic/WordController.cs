@@ -32,7 +32,7 @@ public class WordController : MonoBehaviour
         originalText = initInactiveWord + "が無いゲーム";
         inactiveWord = initInactiveWord;
         StageObject[] stageObjects = _stageLoader.NowStageObjects;
-        ToggleObjects(stageObjects, initInactiveWord, true);
+        ToggleObjects(stageObjects, initInactiveWord, false);
     }
 
     private void Update()
