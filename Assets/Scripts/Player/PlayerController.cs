@@ -217,6 +217,12 @@ public class PlayerController : MonoBehaviour
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();        
         if (stageObject != null)
         {
+            if(stageObject.IsDanger)
+            {
+                Debug.Log("死んだ");
+                // TODO:ここに死亡した時の処理を記述.
+
+            }
             // 触れた単語を取得する.
             AddTouchedWord(stageObject);
         }
