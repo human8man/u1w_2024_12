@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             if (stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
-                if (collision.gameObject.tag == "Fire")
+                if (collision.gameObject.CompareTag("Fire"))
                 {
                     SoundManager.Instance.PlaySound("Dead_Burnig");
                 }
@@ -222,6 +222,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            SoundManager.Instance.PlaySound("Move_Water");
+        }
+
         if (collision.gameObject.tag == "Goal")
         {
             SceneManager.LoadScene("StageSelect");
@@ -246,6 +251,13 @@ public class PlayerController : MonoBehaviour
             }
             // 触れた単語を取得する.
             AddTouchedWord(stageObject);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            SoundManager.Instance.PlaySound("Move_Water");
         }
     }
 }
