@@ -15,7 +15,7 @@ namespace Title
             {
                 _nowTime += Time.deltaTime;
                 if (_loaded) return;
-                if (_nowTime < _transitionTime)
+                if (_nowTime > _transitionTime)
                 {
                     FadeSystem.Instance.LoadScene("Game");
                     _loaded = true;
