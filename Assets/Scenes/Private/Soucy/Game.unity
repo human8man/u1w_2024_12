@@ -3829,6 +3829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rb: {fileID: 0}
   Dead: 0
+  StageInfo: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
+  StageData: {fileID: 11400000, guid: 807618d219529954780be9fb9b9fc4cb, type: 2}
   SpriteIdle: {fileID: 21300000, guid: 75deca5683b5b2c44aa6f813d9b2c888, type: 3}
   SpriteUp: {fileID: 21300000, guid: b8c1e8890d8d29a4c929161e85dbf1c9, type: 3}
   SpriteDown: {fileID: 21300000, guid: 53c09f4fe26fd7a4b83c408fc96b37a7, type: 3}
@@ -8147,12 +8149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   words: []
+  nonWordText: {fileID: 2131904678}
+  _stageLoader: {fileID: 109857558}
   buttons:
   - {fileID: 1410979309}
   - {fileID: 510791064}
   - {fileID: 1989482810}
-  nonWordText: {fileID: 2131904678}
-  _stageLoader: {fileID: 109857558}
   initInactiveWord: "\u25CB\u25CB"
   inactiveWord: 
 --- !u!4 &1718016128
