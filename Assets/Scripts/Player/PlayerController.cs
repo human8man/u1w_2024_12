@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UI;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public PlayerMoveState NowPlayerState { get; set; } = PlayerMoveState.Normal;
+    [SerializeField] PlayerMoveState p;
     #endregion
 
     // Start is called before the first frame update
@@ -61,6 +63,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (NowPlayerState == PlayerMoveState.MoveOnlyMoving)
+        {
+            if (Rb.velocity == Vector2.zero) NowPlayerState = PlayerMoveState.MoveOnlyStopping;   
+        }
         if (NowPlayerState == PlayerMoveState.GameEnd) {Rb.velocity = Vector2.zero; return;}
         // 死亡処理.
         if (Dead)
