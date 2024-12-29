@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,13 +28,22 @@ public class CinemaScope : MonoBehaviour
     private CanvasGroup topCanvasGroup;
     private CanvasGroup bottomCanvasGroup;
 
+    public Action OnFadeOutEnd { get; set; }
+
     private void Start()
     {
         // 初期化処理.
         Init();
 
         // フェードイン.
-        OnFadeInButtonClick();
+        FadeInAndOut();
+    }
+
+    async void FadeInAndOut()
+    {
+        await OnFadeInButtonClick();
+        OnFadeOutEnd?.Invoke();
+        await OnFadeOutButtonClick();
     }
 
     public void Init()
@@ -46,13 +56,13 @@ public class CinemaScope : MonoBehaviour
     }
 
     // ボタンをクリックしたときに非同期メソッドを呼び出す
-    public async void OnFadeInButtonClick()
+    public async Task OnFadeInButtonClick()
     {
         await FadeIn();
     }
 
     // ボタンをクリックしたときに非同期メソッドを呼び出す
-    public async void OnFadeOutButtonClick()
+    public async Task OnFadeOutButtonClick()
     {
         await FadeOut();
     }
