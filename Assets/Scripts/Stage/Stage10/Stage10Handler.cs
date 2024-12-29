@@ -29,6 +29,7 @@ namespace Stage
                 if (_nowTime > _maxAirTime && !_isDead)
                 {
                     _isDead = true;
+                    SoundManager.Instance.PlaySound("Dead_Common");
                     StartCoroutine(_playerController.OnDead());
                 }
                 _airUI.UpdateUI(1 - _nowTime / _maxAirTime);
