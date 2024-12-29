@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Congratulations!(\u3053\u3053\u306F\u5225\u306B\u4F55\u3082\u306A\u304F\u3066\u3044\u3044\u306E\u3067\u843D\u66F8\u304D\u3057\u653E\u984C\u3067\u3059\u3084\u3063\u305F\u306D\uFF01)"
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d644bca2257bc403e8ad6f2be00f239c, type: 2}
-  m_sharedMaterial: {fileID: -7968646828030367434, guid: d644bca2257bc403e8ad6f2be00f239c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ca4c5928c523e447d9cbb1ba659f211b, type: 2}
+  m_sharedMaterial: {fileID: -7712257379435199198, guid: ca4c5928c523e447d9cbb1ba659f211b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

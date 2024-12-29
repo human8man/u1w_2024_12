@@ -85,8 +85,5 @@ public class ClearTextController : MonoBehaviour
         }
         textdata.position = end;
         text.alpha = 1f;
-
-        // 各文字が最終地点についた際に効果音を再生(テスト再生用なので削除).
-        SoundManager.Instance.PlaySound("SwitchOn");
     }
 }

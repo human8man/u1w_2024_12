@@ -141,6 +141,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
 
         // 単語を追加.
         words.Add(word);
+        SoundManager.Instance.PlaySound("GetWord");
         Debug.Log("単語 " + word + " をリストに追加しました。");
     }
 
