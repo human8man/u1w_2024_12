@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6102251231901355030}
   - component: {fileID: 4656520245376025484}
   - component: {fileID: 4855871170236086876}
-  - component: {fileID: 3070615598343644066}
   - component: {fileID: 8223564453023401417}
   m_Layer: 0
   m_Name: Player
@@ -127,35 +126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c2a002a8344549b0e043d65f7d7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rb: {fileID: 0}
+  Rb: {fileID: 4656520245376025484}
   Dead: 0
+  StageInfo: {fileID: 0}
+  StageData: {fileID: 0}
+  DeadMessege: {fileID: 0}
+  _stageClearHandler: {fileID: 0}
   SpriteIdle: {fileID: 21300000, guid: 75deca5683b5b2c44aa6f813d9b2c888, type: 3}
   SpriteUp: {fileID: 21300000, guid: b8c1e8890d8d29a4c929161e85dbf1c9, type: 3}
   SpriteDown: {fileID: 21300000, guid: 53c09f4fe26fd7a4b83c408fc96b37a7, type: 3}
   SpriteLeft: {fileID: 21300000, guid: 489b84b7421d26d4fb0e1c8d7b6e4cd3, type: 3}
   SpriteRight: {fileID: 21300000, guid: 0311c4ee080c72b43a52cf5cea176e1f, type: 3}
+  DeadSprites:
+  - {fileID: -1609968801, guid: 04c486fb9b832e14babdac033b931b96, type: 3}
+  - {fileID: -1197579921, guid: 04c486fb9b832e14babdac033b931b96, type: 3}
+  - {fileID: 1256764717, guid: 04c486fb9b832e14babdac033b931b96, type: 3}
   wordController: {fileID: 0}
---- !u!95 &3070615598343644066
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6750187430575123565}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffd9341add8d61a48bdfd50b39aad735, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &8223564453023401417
 BoxCollider2D:
   m_ObjectHideFlags: 0

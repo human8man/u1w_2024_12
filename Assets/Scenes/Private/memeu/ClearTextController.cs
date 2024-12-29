@@ -27,7 +27,7 @@ public class ClearTextController : MonoBehaviour
 
 
 
-    void Start()
+    public void Initialize()
     {
         // 初期位置を画面上部に.
         Vector3 StartPos = parent.position + Vector3.up * Screen.height * 0.5f;  

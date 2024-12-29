@@ -1,4 +1,6 @@
+using System;
 using System.Net;
+using UI;
 using UnityEngine;
 
 public class EndCreditRoll : MonoBehaviour
@@ -20,8 +22,18 @@ public class EndCreditRoll : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        StartMove();
+    }
+
     public void StartMove()
     {
         isMove = true;
+    }
+
+    public void ReturnToTitle()
+    {
+        FadeSystem.Instance.LoadScene("Title");
     }
 }

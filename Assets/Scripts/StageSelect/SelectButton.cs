@@ -7,6 +7,7 @@
 using Stage;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -71,7 +72,8 @@ public class SelectButton : MonoBehaviour
 			StageInfo.LoadingStageNum = StageIndex;
 			stageData.ClearStage(StageInfo.LoadingStageNum);
             //シーンを読み込む.
-			SceneManager.LoadScene(StageName);
+            FadeSystem.Instance.LoadScene(StageName);
+			//SceneManager.LoadScene(StageName);
 
 			GetComponent<Image>().color = Color.white;
         }
