@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,23 +21,14 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // リトライボタンが押されて時の処理.
     public void OnRetryButton()
     {
+        /*
         Scene currenScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currenScene.name);
+        */
+        FadeSystem.Instance.LoadScene("Game");
     }
 
 
