@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 685a0299782ca634583d54d8652a42d0, type: 3}
-  m_Name: StageData
+  m_Script: {fileID: 11500000, guid: 3b4f1b286f4d8fd48adfa9da79137135, type: 3}
+  m_Name: DeathCauseLog
   m_EditorClassIdentifier: 
-  stageCleared: 0101010101000000000000
-  currentStageIndex: 4
+  m_death_cause_history:
+  - "\u6B7B\u3093\u3060\uFF01"

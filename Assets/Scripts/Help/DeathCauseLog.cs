@@ -1,6 +1,6 @@
 /**
  * @file DeathCauseLog.cs
- * @brief 死因記録
+ * @brief 死因記録用ScriptableObject
  * @author Hara
  * @date 2024/12/28
  */
@@ -8,16 +8,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>
-/// 死因記録
-/// </summary>
-public class DeathCauseLog : MonoBehaviour
+[CreateAssetMenu(fileName = "DeathCauseLog", menuName = "ScriptableObject/DeathCauseLog")]
+public class DeathCauseLog : ScriptableObject
 {
     #region メンバ変数
     
     /// <summary>
     /// 死因履歴
     /// </summary>
+    [SerializeField]
     private List<string> m_death_cause_history = null;
 
     #endregion
@@ -25,7 +24,7 @@ public class DeathCauseLog : MonoBehaviour
     /// <summary>
     /// 初期化処理
     /// </summary>
-    void Awake()
+    void OnEnable()
     {
         m_death_cause_history = new List<string>();
     }
@@ -58,3 +57,4 @@ public class DeathCauseLog : MonoBehaviour
         m_death_cause_history.Clear();
     }
 }
+
