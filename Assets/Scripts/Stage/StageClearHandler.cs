@@ -8,6 +8,7 @@ namespace Stage
     {
         [SerializeField] ClearTextController _clearTextController;
         [SerializeField] PlayerController _playerController;
+        [SerializeField] StageInfo _info;
         public void OnStageClear()
         {
             StartCoroutine(OnStageClearCo());
@@ -18,7 +19,15 @@ namespace Stage
             _clearTextController.Initialize();
             _playerController.NowPlayerState = PlayerController.PlayerMoveState.GameEnd;
             yield return new WaitForSeconds(2);
-            FadeSystem.Instance.LoadScene("StageSelect");
+            if (_info.LoadingStageNum == 10)
+            {
+                _info.LoadingStageNum = 11;
+                FadeSystem.Instance.LoadScene("Game");
+            }
+            else
+            {
+                FadeSystem.Instance.LoadScene("StageSelect");   
+            }
         }
     }
 }

@@ -9,8 +9,10 @@ namespace Stage
         [SerializeField] Stage10PlayerAirUI _airUI;
         [SerializeField] float _maxAirTime;
         [SerializeField] GameObject _playerObject;
+        [SerializeField] PlayerController _playerController;
         float _nowTime = 0;
-
+        bool _isDead = false;
+        
         void Start()
         {
             WordController.Instance.AddWord("水");
@@ -24,9 +26,10 @@ namespace Stage
             {
                 _airUI.gameObject.SetActive(true);
                 _nowTime += Time.deltaTime;
-                if (_nowTime > _maxAirTime)
+                if (_nowTime > _maxAirTime && !_isDead)
                 {
-                    Debug.Log("死んだ");
+                    _isDead = true;
+                    StartCoroutine(_playerController.OnDead());
                 }
                 _airUI.UpdateUI(1 - _nowTime / _maxAirTime);
             }

@@ -1,6 +1,7 @@
 using Stage;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -271,7 +272,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator OnDead()
+    public IEnumerator OnDead()
     {
         Debug.Log("OnDead");
         NowPlayerState = PlayerMoveState.GameEnd;
@@ -280,6 +281,7 @@ public class PlayerController : MonoBehaviour
         SpriteRenderer.sprite = DeadSprites[1];
         yield return new WaitForSeconds(0.1f);
         SpriteRenderer.sprite = DeadSprites[2];
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
+        FadeSystem.Instance.LoadScene("Game");
     }
 }

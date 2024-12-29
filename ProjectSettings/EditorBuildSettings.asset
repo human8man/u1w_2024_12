@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuildScene/FadeScene.unity
     guid: 25fc07f582e964377bc79037c0836591
+  - enabled: 1
+    path: Assets/Scenes/BuildScene/EndCredits.unity
+    guid: 2956ea683c4c64e90ba95f55aa2f5fc7
   - enabled: 0
     path: Assets/Scenes/BuildScene/Common.unity
     guid: 9174faa1091844f648c744a046fea69d

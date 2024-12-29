@@ -445,6 +445,10 @@ MonoBehaviour:
     PlayerBeginningPosition: {x: 1.55, y: -0.75}
     TermCount: 4
     BeginningDeletedWord: "\u25CF\u25CF"
+  - StageGameObject: {fileID: 396211176727231569}
+    PlayerBeginningPosition: {x: 0, y: -3.12}
+    TermCount: 1
+    BeginningDeletedWord: ENDING
   _stageInfo: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
   _playerTransform: {fileID: 715022192}
   _wordController: {fileID: 1718016127}
@@ -701,6 +705,12 @@ PrefabInstance:
     - target: {fileID: 6114768878993090817, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529972925534985557, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
+      propertyPath: m_text
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7575849491970264937, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
       propertyPath: m_Name
@@ -3420,7 +3430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &599380414
 Transform:
   m_ObjectHideFlags: 0
@@ -3456,6 +3466,11 @@ MonoBehaviour:
     containedWords:
     - "\u507D\u7269"
   isDanger: 0
+--- !u!1 &605446842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7575849491970264937, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
+  m_PrefabInstance: {fileID: 143607719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &615383718
 GameObject:
   m_ObjectHideFlags: 0
@@ -6438,7 +6453,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1156247953}
   m_maskType: 0
 --- !u!23 &1156247953
@@ -11208,6 +11223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clearTextController: {fileID: 1739433949}
   _playerController: {fileID: 715022189}
+  _info: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
 --- !u!114 &2131904678 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5482171135670784508, guid: 05ea2e73fe5bb4babba664cb8a1ae625, type: 3}
@@ -11528,7 +11544,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!4 &349858949265923854
 Transform:
   m_ObjectHideFlags: 0
@@ -11645,6 +11661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4860133135378792294}
+  - component: {fileID: 4860133135378792295}
   m_Layer: 0
   m_Name: Stage11_StaffRoll
   m_TagString: Untagged
@@ -11834,7 +11851,7 @@ GameObject:
   - component: {fileID: 869613533317629169}
   m_Layer: 0
   m_Name: Fire (4)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12205,7 +12222,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!4 &877430484491156236
 Transform:
   m_ObjectHideFlags: 0
@@ -12649,7 +12666,7 @@ GameObject:
   - component: {fileID: 345670449237558714}
   m_Layer: 0
   m_Name: Fire (4)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12714,7 +12731,7 @@ GameObject:
   - component: {fileID: 1954246234427516319}
   m_Layer: 0
   m_Name: Fire (3)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12909,7 +12926,7 @@ GameObject:
   - component: {fileID: 1828964699580019299}
   m_Layer: 0
   m_Name: Fire (1)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13004,7 +13021,7 @@ GameObject:
   - component: {fileID: 1769288351168427587}
   m_Layer: 0
   m_Name: Fire (1)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13113,7 +13130,7 @@ GameObject:
   - component: {fileID: 5129221050958788248}
   m_Layer: 0
   m_Name: Water (8)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13433,7 +13450,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &1787720661226388547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13658,7 +13675,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!61 &1859864870891593041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13817,7 +13834,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!212 &1956234461285500999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14740,7 +14757,7 @@ GameObject:
   - component: {fileID: 8104111208887501891}
   m_Layer: 0
   m_Name: Water (4)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15060,7 +15077,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!95 &2773063145291646420
 Animator:
   serializedVersion: 5
@@ -15143,7 +15160,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!4 &2819138171487638516
 Transform:
   m_ObjectHideFlags: 0
@@ -15240,7 +15257,7 @@ GameObject:
   - component: {fileID: 8410512151038525069}
   m_Layer: 0
   m_Name: Water (6)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15737,7 +15754,7 @@ GameObject:
   - component: {fileID: 2812350652494790360}
   m_Layer: 0
   m_Name: Fire (1)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15911,7 +15928,7 @@ GameObject:
   - component: {fileID: 2741202727519324416}
   m_Layer: 0
   m_Name: Fire (1)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16028,7 +16045,7 @@ GameObject:
   - component: {fileID: 9065874251216780443}
   m_Layer: 0
   m_Name: Water (3)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16352,7 +16369,7 @@ GameObject:
   - component: {fileID: 7083858017006301083}
   m_Layer: 0
   m_Name: Water (5)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16600,7 +16617,7 @@ GameObject:
   - component: {fileID: 4069693288475178935}
   m_Layer: 0
   m_Name: Fire (4)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16933,7 +16950,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &3906452164707418995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17053,7 +17070,7 @@ GameObject:
   - component: {fileID: 4354134672703279240}
   m_Layer: 0
   m_Name: Fire (3)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17289,7 +17306,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &4073607989164148368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17577,7 +17594,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!61 &4372626322052452490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17839,7 +17856,7 @@ GameObject:
   - component: {fileID: 3889763982397997713}
   m_Layer: 0
   m_Name: Fire (2)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18106,7 +18123,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!212 &4755047078087960217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18349,6 +18366,18 @@ Transform:
   - {fileID: 7610595985211263127}
   m_Father: {fileID: 109857557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4860133135378792295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396211176727231569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07adfffb52484072860058f7c0c13176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4924253806731934093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18365,7 +18394,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &4930546275052363933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18399,7 +18428,7 @@ GameObject:
   - component: {fileID: 5760687662978792214}
   m_Layer: 0
   m_Name: Fire (3)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18526,7 +18555,7 @@ GameObject:
   - component: {fileID: 5556856014788266799}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18970,7 +18999,7 @@ GameObject:
   - component: {fileID: 1927677513132669424}
   m_Layer: 0
   m_Name: Water (9)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19144,7 +19173,7 @@ GameObject:
   - component: {fileID: 4744410553315813420}
   m_Layer: 0
   m_Name: Fire (2)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19426,7 +19455,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!1 &5582962218217763023
 GameObject:
   m_ObjectHideFlags: 0
@@ -19442,7 +19471,7 @@ GameObject:
   - component: {fileID: 2163095961172609092}
   m_Layer: 0
   m_Name: Water (7)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20138,7 +20167,7 @@ GameObject:
   - component: {fileID: 4924253806731934093}
   m_Layer: 0
   m_Name: Fire (2)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20178,7 +20207,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &5793087430817999528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20609,11 +20638,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1912550040227363352, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912550040227363352, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.75
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 1912550040227363352, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20655,6 +20684,10 @@ PrefabInstance:
       propertyPath: StageInfo
       value: 
       objectReference: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
+    - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+      propertyPath: DeadMessege
+      value: 
+      objectReference: {fileID: 605446842}
     - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: wordController
       value: 
@@ -21938,7 +21971,7 @@ GameObject:
   - component: {fileID: 1127546917412760272}
   m_Layer: 0
   m_Name: Water (10)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22202,7 +22235,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &6935402990977046388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22748,7 +22781,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &7292970471778784758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22765,7 +22798,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!4 &7299306913111715315
 Transform:
   m_ObjectHideFlags: 0
@@ -22817,7 +22850,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!1 &7358588944122896051
 GameObject:
   m_ObjectHideFlags: 0
@@ -22833,7 +22866,7 @@ GameObject:
   - component: {fileID: 7865495607692612801}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23004,7 +23037,7 @@ GameObject:
   - component: {fileID: 7893719330767052980}
   m_Layer: 0
   m_Name: Fire (4)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23567,7 +23600,7 @@ GameObject:
   - component: {fileID: 6929141073505969801}
   m_Layer: 0
   m_Name: Fire (5)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23722,7 +23755,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &7893719330767052980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23739,7 +23772,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &7893902758800957733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23867,7 +23900,7 @@ GameObject:
   - component: {fileID: 7292135284480454076}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23887,7 +23920,7 @@ GameObject:
   - component: {fileID: 7292970471778784758}
   m_Layer: 0
   m_Name: Fire (5)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23943,7 +23976,7 @@ GameObject:
   - component: {fileID: 7348039515016123134}
   m_Layer: 0
   m_Name: Fire (3)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24368,7 +24401,7 @@ GameObject:
   - component: {fileID: 8764406297104390760}
   m_Layer: 0
   m_Name: Fire (5)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24511,7 +24544,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!4 &8397867506351260356
 Transform:
   m_ObjectHideFlags: 0
@@ -24909,7 +24942,7 @@ GameObject:
   - component: {fileID: 9008744932277276995}
   m_Layer: 0
   m_Name: Fire (2)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24929,7 +24962,7 @@ GameObject:
   - component: {fileID: 2683932483626963225}
   m_Layer: 0
   m_Name: Water (2)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24982,7 +25015,7 @@ GameObject:
   - component: {fileID: 9060166700071290509}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25264,7 +25297,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!61 &8768714813298122069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25482,7 +25515,7 @@ GameObject:
   - component: {fileID: 2912861926584384170}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25658,7 +25691,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!114 &9060166700071290509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25675,7 +25708,7 @@ MonoBehaviour:
     mainWord: 
     containedWords:
     - "\u6C17\u4F53"
-  isDanger: 0
+  isDanger: 1
 --- !u!61 &9065874251216780443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25845,7 +25878,7 @@ GameObject:
   - component: {fileID: 8395724782422968880}
   m_Layer: 0
   m_Name: Fire (5)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25910,6 +25943,7 @@ MonoBehaviour:
   _airUI: {fileID: 4465992475228833325}
   _maxAirTime: 5
   _playerObject: {fileID: 715022187}
+  _playerController: {fileID: 715022189}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
