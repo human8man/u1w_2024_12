@@ -1421,7 +1421,7 @@ MonoBehaviour:
   - {fileID: 8934396359703565955}
   - {fileID: 997425320335158167}
   - {fileID: 6652718599345877689}
-  initInactiveWord: "\u3007\u3007"
+  initInactiveWord: "\u25CF\u25CF"
   inactiveWord: 
 --- !u!1 &1833797302
 GameObject:
