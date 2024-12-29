@@ -48,7 +48,7 @@ namespace Stage
                     SoundManager.Instance.PlayLoop("BGM_1");
                     break;
                 case 3:
-                    SoundManager.Instance.PlayLoop("BGM_2");
+                    SoundManager.Instance.PlayLoop("BGM_Stage3");
                     break;
                 case 4:
                     SoundManager.Instance.PlayLoop("BGM_3");
