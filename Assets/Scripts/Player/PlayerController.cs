@@ -1,9 +1,7 @@
-using Stage;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,9 +12,6 @@ public class PlayerController : MonoBehaviour
     private Vector2     BeforeVel;      // 前回の移動.
 
     private const float Speed = 7.0f;   // 移動スピード.
-
-    [SerializeField] StageInfo StageInfo;
-    [SerializeField] StageData StageData;
 
 
     // スプライト.
@@ -216,8 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            SceneManager.LoadScene("StageSelect");
-            StageData.ClearStage(StageInfo.LoadingStageNum);
+            Debug.Log("クリアしたよおめでとう！");
             GameManager.instance.IsClear = true;
             SoundManager.Instance.PlaySound("GetFlag");
         }
