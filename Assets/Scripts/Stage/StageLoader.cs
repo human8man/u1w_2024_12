@@ -38,6 +38,41 @@ namespace Stage
             _playerTransform.position = nowStageInfoTuple.PlayerBeginningPosition;
             _wordController.initInactiveWord = nowStageInfoTuple.BeginningDeletedWord;
             _termCountText.text = nowStageInfoTuple.TermCount.ToString();
+
+            switch (stageNum)
+            {
+                case 1:
+                    SoundManager.Instance.PlayLoop("BGM_Ingame");
+                    break;
+                case 2:
+                    SoundManager.Instance.PlayLoop("BGM_1");
+                    break;
+                case 3:
+                    SoundManager.Instance.PlayLoop("BGM_2");
+                    break;
+                case 4:
+                    SoundManager.Instance.PlayLoop("BGM_3");
+                    break;
+                case 5:
+                    SoundManager.Instance.PlayLoop("BGM_4");
+                    break;
+                case 6:
+                    SoundManager.Instance.PlayLoop("BGM_5");
+                    break;
+                case 7:
+                    SoundManager.Instance.PlayLoop("BGM_1");
+                    break;
+                case 8:
+                    SoundManager.Instance.PlayLoop("BGM_2");
+                    break;
+                case 9:
+                    SoundManager.Instance.PlayLoop("BGM_Ingame");
+                    break;
+                case 10:
+                    SoundManager.Instance.PlayLoop("NoMusicGame");
+                    break;
+            }
+
         }
     }
 }

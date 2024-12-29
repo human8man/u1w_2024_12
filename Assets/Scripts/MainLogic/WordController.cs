@@ -135,7 +135,11 @@ public class WordController : SingletonMonoBehaviour<WordController>
     {
         if (words.Contains(word))
         {
-            SoundManager.Instance.PlaySound("Blocked");
+            if(word == "石" || word == "固体" || word == "自分") 
+            {
+                SoundManager.Instance.PlaySound("Blocked");
+            }
+
             Debug.Log("単語 " + word + " は既にリストに存在するため、追加できません。");
             return;
         }

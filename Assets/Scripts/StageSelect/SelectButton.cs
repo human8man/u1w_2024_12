@@ -56,15 +56,16 @@ public class SelectButton : MonoBehaviour
 			//このボタンを選択状態にする.
 			IsSelected = true;
 			Debug.Log($"ステージ{StageName}が選択されました");
-			Manager.OnStageSelected(StageIndex);
+            Manager.OnStageSelected(StageIndex);
 			GetComponent<Image>().color = Color.gray;
-		}
-		else
+            SoundManager.Instance.PlaySound("SwitchOff");
+        }
+        else
 		{
 			//選択状態で再クリックされたらステージ遷移.
 			Debug.Log($"ステージ{StageName}に移動します");
             //ほかのボタンの選択状態を解除.
-			Manager.HideOtherButton(StageIndex);
+            Manager.HideOtherButton(StageIndex);
 
             //ステージ情報のステージ番号を保存.
 			StageInfo.LoadingStageNum = StageIndex;
@@ -73,8 +74,9 @@ public class SelectButton : MonoBehaviour
 			SceneManager.LoadScene(StageName);
 
 			GetComponent<Image>().color = Color.white;
-		}
-	}
+            SoundManager.Instance.PlaySound("SwitchOn");
+        }
+    }
 
 	public void UpdateInteractable()
 	{
