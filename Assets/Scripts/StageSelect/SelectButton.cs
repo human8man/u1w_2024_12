@@ -39,44 +39,29 @@ public class SelectButton : MonoBehaviour
 		UpdateInteractable();
 	}
 
-	public void OnButtonClick()
-	{
+    public void OnButtonClick()
+    {
         //SelectManagerを探す.
-		SelectManager Manager = FindObjectOfType<SelectManager>(); 
-		if (Manager == null)
-		{
-			Debug.LogError("StageSelectionManagerが見つかりません");
-			return;
-		}
-		
-		if (!IsSelected)
-		{
-			//ほかのボタンを非選択状態にする.
-			Manager.DeselectAll();
-
-			//このボタンを選択状態にする.
-			IsSelected = true;
-			Debug.Log($"ステージ{StageName}が選択されました");
-            Manager.OnStageSelected(StageIndex);
-			GetComponent<Image>().color = Color.gray;
-            SoundManager.Instance.PlaySound("SwitchOn");
+        SelectManager Manager = FindObjectOfType<SelectManager>();
+        if (Manager == null)
+        {
+            Debug.LogError("StageSelectionManagerが見つかりません");
+            return;
         }
-        else
-		{
-			//選択状態で再クリックされたらステージ遷移.
-			Debug.Log($"ステージ{StageName}に移動します");
-            //ほかのボタンの選択状態を解除.
-            Manager.HideOtherButton(StageIndex);
 
-            //ステージ情報のステージ番号を保存.
-			StageInfo.LoadingStageNum = StageIndex;
-			stageData.ClearStage(StageInfo.LoadingStageNum);
-            //シーンを読み込む.
-            FadeSystem.Instance.LoadScene(StageName);
-			//SceneManager.LoadScene(StageName);
-
-			GetComponent<Image>().color = Color.white;
-        }
+        Manager.DeselectAll();
+        //選択状態で再クリックされたらステージ遷移.
+        Debug.Log($"ステージ{StageName}に移動します");
+        //ほかのボタンの選択状態を解除.
+        Manager.HideOtherButton(StageIndex);
+        Manager.OnStageSelected(StageIndex);
+        //ステージ情報のステージ番号を保存.
+        StageInfo.LoadingStageNum = StageIndex;
+        //シーンを読み込む.
+        FadeSystem.Instance.LoadScene(StageName);
+        //SceneManager.LoadScene(StageName);
+        GetComponent<Image>().color = Color.gray;
+        SoundManager.Instance.PlaySound("SwitchOn");
     }
 
 	public void UpdateInteractable()
