@@ -40,6 +40,7 @@ public class ButtonToggleController : MonoBehaviour
         if (lastClickedButtonIndex == index)
         {
             ToggleButtonState(index); // ON/OFF切り替え.
+            SoundManager.Instance.PlaySound("SwitchOff");
         }
         else
         {
@@ -51,6 +52,7 @@ public class ButtonToggleController : MonoBehaviour
 
             SetButtonColor(index, true); // 今回のボタンをON.
             lastClickedButtonIndex = index; // 更新.
+            SoundManager.Instance.PlaySound("SwitchOn");
         }
     }
 

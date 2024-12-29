@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
             if(stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
+                SoundManager.Instance.PlaySound("Dead_Common");
                 // TODO:ここに死亡した時の処理を記述.
 
             }
@@ -212,6 +213,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("クリアしたよおめでとう！");
             GameManager.instance.IsClear = true;
+            SoundManager.Instance.PlaySound("GetFlag");
         }
 
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();        
@@ -220,6 +222,7 @@ public class PlayerController : MonoBehaviour
             if(stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
+                SoundManager.Instance.PlaySound("DeadBurnig");
                 // TODO:ここに死亡した時の処理を記述.
 
             }
