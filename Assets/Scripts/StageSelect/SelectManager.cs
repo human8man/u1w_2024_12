@@ -1,3 +1,9 @@
+/**
+ * @file DeathCauseLog.cs.
+ * @brief ボタン選択マネージャー.
+ * @author ふぅ.
+ * @date 2024/12/29.
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +37,7 @@ public class SelectManager : MonoBehaviour
 
     public void OnStageSelected(int StageIndex)
     {
+        //タイトルを設定.
         StageText.text = $"ステージ{StageIndex}以外ないゲーム";
     }
 
@@ -49,6 +56,7 @@ public class SelectManager : MonoBehaviour
         {
             if (Button.StageIndex != StageIndex)
             {
+                //ボタンを非表示.
                 Button.gameObject.SetActive(false);
             }
         }
