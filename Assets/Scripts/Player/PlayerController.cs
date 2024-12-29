@@ -1,7 +1,9 @@
+using Stage;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private Vector2     BeforeVel;      // 前回の移動.
 
     private const float Speed = 7.0f;   // 移動スピード.
+
+    [SerializeField] StageInfo StageInfo;
+    [SerializeField] StageData StageData;
 
 
     // スプライト.
@@ -134,6 +139,7 @@ public class PlayerController : MonoBehaviour
             if(stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
+                SoundManager.Instance.PlaySound("Dead_Common");
                 // TODO:ここに死亡した時の処理を記述.
 
             }
@@ -210,8 +216,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            Debug.Log("クリアしたよおめでとう！");
+            SceneManager.LoadScene("StageSelect");
+            StageData.ClearStage(StageInfo.LoadingStageNum);
             GameManager.instance.IsClear = true;
+            SoundManager.Instance.PlaySound("GetFlag");
         }
 
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();        
@@ -220,6 +228,7 @@ public class PlayerController : MonoBehaviour
             if(stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
+                SoundManager.Instance.PlaySound("DeadBurnig");
                 // TODO:ここに死亡した時の処理を記述.
 
             }

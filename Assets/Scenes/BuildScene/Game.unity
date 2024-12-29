@@ -17076,6 +17076,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+      propertyPath: StageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 807618d219529954780be9fb9b9fc4cb, type: 2}
+    - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+      propertyPath: StageInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
+    - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: wordController
       value: 
       objectReference: {fileID: 1718016127}

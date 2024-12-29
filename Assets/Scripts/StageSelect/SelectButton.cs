@@ -1,3 +1,10 @@
+/**
+ * @file DeathCauseLog.cs.
+ * @brief ボタン選択.
+ * @author ふぅ.
+ * @date 2024/12/29.
+ */
+using Stage;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,27 +14,40 @@ using UnityEngine.UI;
 
 public class SelectButton : MonoBehaviour
 {
-	public int StageIndex;              //ステージ番号.
-	public Button ButtonComponent;
-	public string StageName;            //このステージの名前.
-	private bool IsSelected = false;    //選択状態.
+	public int StageIndex;                  //ステージ番号.
+	public Button ButtonComponent;          //ボタンのコンポーネント.
+	public string StageName;                //このステージの名前.
+	private bool IsSelected = false;        //選択状態.
 	[SerializeField]
-	private bool IsClearedFlg = false;
+	private bool IsClearedFlg = false;      //ステージがクリアされたかどうか.
+	[SerializeField] StageInfo StageInfo;   //ステージ情報を保持するオブジェクト.
+	[SerializeField] StageData stageData;   //ステージのデータを管理するオブジェクト.
+
+	void Start()
+	{
+		if (stageData != null)
+		{
+			// StageDataを使って処理を行う
+			Debug.Log($"現在のステージ: {stageData.GetCurrentStage()}");
+		}
+	}
 
 	public void Update()
 	{
+        //ボタンのインタラクション状態を更新.
 		UpdateInteractable();
 	}
 
 	public void OnButtonClick()
 	{
-		SelectManager Manager = FindObjectOfType<SelectManager>();
+        //SelectManagerを探す.
+		SelectManager Manager = FindObjectOfType<SelectManager>(); 
 		if (Manager == null)
 		{
 			Debug.LogError("StageSelectionManagerが見つかりません");
 			return;
 		}
-
+		
 		if (!IsSelected)
 		{
 			//ほかのボタンを非選択状態にする.
@@ -43,22 +63,36 @@ public class SelectButton : MonoBehaviour
 		{
 			//選択状態で再クリックされたらステージ遷移.
 			Debug.Log($"ステージ{StageName}に移動します");
+            //ほかのボタンの選択状態を解除.
 			Manager.HideOtherButton(StageIndex);
+
+            //ステージ情報のステージ番号を保存.
+			StageInfo.LoadingStageNum = StageIndex;
+			stageData.ClearStage(StageInfo.LoadingStageNum);
+            //シーンを読み込む.
 			SceneManager.LoadScene(StageName);
+
 			GetComponent<Image>().color = Color.white;
 		}
 	}
 
 	public void UpdateInteractable()
 	{
-		//ステージクリア状態に基づいてボタンを有効化または無効化.
-		if(StageIndex == 1 || IsClearedFlg)
+		if (ButtonComponent != null)
 		{
-			ButtonComponent.interactable = true;
+			//ステージクリア状態に基づいてボタンを有効化または無効化.
+			if (StageIndex == 1 || IsCleared)
+			{
+				ButtonComponent.interactable = true;
+			}
+			else
+			{
+				ButtonComponent.interactable = false;
+			}
 		}
 		else
 		{
-			ButtonComponent.interactable = false;
+			Debug.LogWarning($"ButtonComponent is missing for Stage {StageIndex}.");
 		}
 	}
 

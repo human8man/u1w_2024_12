@@ -64,15 +64,11 @@ public class SoundManager : MonoBehaviour
 
 
     // 現在再生中の音を停止.
-    public void StopSound(string fileName)
+    public void StopSound()
     {
-        if (AudioSource.isPlaying && AudioSource.clip.name == fileName)
+        if (AudioSource.isPlaying)
         {
             AudioSource.Stop();
-        }
-        else
-        {
-            Debug.LogError("停止'{fileName}'はどちらの配列に存在しないためできない");
         }
     }
 }
