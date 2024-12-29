@@ -240,6 +240,7 @@ public class PlayerController : MonoBehaviour
                 // TODO:ここに死亡した時の処理を記述.
 
                 if (DeadMessege != null) {
+                    DeadMessege.gameObject.SetActive(true);
                     DeadMessege.GetComponent<FadeOut>().OnFadeInButtonClick();
                 }
             }
