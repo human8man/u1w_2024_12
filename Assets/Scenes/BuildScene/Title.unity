@@ -1197,6 +1197,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+--- !u!114 &1257857793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+  m_PrefabInstance: {fileID: 1257857792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251c2a002a8344549b0e043d65f7d7fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354976241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +1710,7 @@ MonoBehaviour:
   words: []
   nonWordText: {fileID: 5482171136115399619}
   _stageLoader: {fileID: 0}
+  _playerController: {fileID: 1257857793}
   buttons:
   - {fileID: 8934396359703565955}
   - {fileID: 997425320335158167}
