@@ -34,7 +34,15 @@ public class WordController : SingletonMonoBehaviour<WordController>
 
         originalText = initInactiveWord + "が無いゲーム";
         inactiveWord = initInactiveWord;
-        StageObject[] stageObjects = _stageLoader.NowStageObjects;
+        StageObject[] stageObjects;
+        if (_stageLoader == null)
+        {
+            stageObjects = FindObjectsOfType<StageObject>();
+        }
+        else
+        {
+            stageObjects = _stageLoader.NowStageObjects;   
+        }
         ToggleObjects(stageObjects, initInactiveWord, false);
     }
 
@@ -65,7 +73,15 @@ public class WordController : SingletonMonoBehaviour<WordController>
             return;
         }
 
-        StageObject[] stageObjects = _stageLoader.NowStageObjects;
+        StageObject[] stageObjects;
+        if (_stageLoader == null)
+        {
+            stageObjects = FindObjectsOfType<StageObject>();
+        }
+        else
+        {
+            stageObjects = _stageLoader.NowStageObjects;   
+        }
 
         // 前回と今回のボタンが異なる場合.
         if (currentText.text != lastText.text)

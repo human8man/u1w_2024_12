@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d5b78c002f0d4763a434a5291ae6bb7
+guid: d7fd74148b0604677b118b2d9c07706d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaterSteam_0
+      name: fire_effectx10_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc840279f3b0b4a99b3a285025394198
-      internalID: -996104921
+      spriteID: 98aadbddb507546f0afaa7580293997e
+      internalID: -1232120226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSteam_1
+      name: fire_effectx10_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 280
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38267e9e05d444e38c39b9d5d553324
-      internalID: -538503565
+      spriteID: 7d3c5196c7de94f199378945553f89e5
+      internalID: 667983839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSteam_2
+      name: fire_effectx10_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 560
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 293bb280969194df7be4667bec51b2fa
-      internalID: 1674489630
+      spriteID: 891517ed571fc4232b1409b7f07655e4
+      internalID: -1162005744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSteam_3
+      name: fire_effectx10_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 840
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34d00b111ac9542fe8b4e5976e3e3fcc
-      internalID: 1895695590
+      spriteID: 3098671c83ff5443a98cc421ff5166f7
+      internalID: -1128547318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSteam_4
+      name: fire_effectx10_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1120
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42ff1a9089cbb4fcc8a737e46803c2fa
-      internalID: 281534870
+      spriteID: d26260378c88e45f8817a937bc5c6dc8
+      internalID: -486768374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterSteam_5
+      name: fire_effectx10_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 1400
         y: 0
-        width: 32
-        height: 32
+        width: 280
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d32b78482e54f43a695e96e98d40613a
-      internalID: -649249459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaterSteam_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd8d7909f4a524be09f1ac7c86027d18
-      internalID: -542222466
+      spriteID: f2e264416d2674928ae6dee34613a777
+      internalID: 2103487521
       vertices: []
       indices: 
       edges: []
@@ -267,13 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WaterSteam_0: -996104921
-      WaterSteam_1: -538503565
-      WaterSteam_2: 1674489630
-      WaterSteam_3: 1895695590
-      WaterSteam_4: 281534870
-      WaterSteam_5: -649249459
-      WaterSteam_6: -542222466
+      fire_effectx10_0: -1232120226
+      fire_effectx10_1: 667983839
+      fire_effectx10_2: -1162005744
+      fire_effectx10_3: -1128547318
+      fire_effectx10_4: -486768374
+      fire_effectx10_5: 2103487521
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
