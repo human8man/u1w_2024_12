@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] StageInfo StageInfo;
     [SerializeField] StageData StageData;
 
+    [SerializeField] GameObject DeadMessege;
 
     // スプライト.
     public Sprite SpriteIdle;
@@ -238,6 +239,9 @@ public class PlayerController : MonoBehaviour
                 SoundManager.Instance.PlaySound("DeadBurnig");
                 // TODO:ここに死亡した時の処理を記述.
 
+                if (DeadMessege != null) {
+                    DeadMessege.GetComponent<FadeOut>().OnFadeInButtonClick();
+                }
             }
             // 触れた単語を取得する.
             AddTouchedWord(stageObject);
