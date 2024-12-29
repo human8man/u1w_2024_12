@@ -284,4 +284,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         FadeSystem.Instance.LoadScene("Game");
     }
+
+    public void OnButtonClick()
+    {
+        FadeSystem.Instance.LoadScene("StageSelect");
+    }
 }
