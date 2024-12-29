@@ -9,7 +9,7 @@ namespace Stage
 
         void Update()
         {
-            transform.position = _playerTransform.position;
+            transform.position = _playerTransform.position + new Vector3(0,0,1);
         }
     }
 }

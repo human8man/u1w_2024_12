@@ -10665,6 +10665,7 @@ MonoBehaviour:
   words: []
   nonWordText: {fileID: 2131904678}
   _stageLoader: {fileID: 109857558}
+  _playerController: {fileID: 715022189}
   buttons:
   - {fileID: 1410979309}
   - {fileID: 510791064}

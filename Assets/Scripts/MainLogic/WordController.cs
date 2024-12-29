@@ -15,6 +15,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
     [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
     [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
     [SerializeField] StageLoader _stageLoader;
+    [SerializeField] PlayerController _playerController;
 
     public Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
                                              
@@ -62,6 +63,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
     // ボタンがクリックされた時の処理.
     private void OnClickButton(int index)
     {
+        if (_playerController.NowPlayerState == PlayerController.PlayerMoveState.GameEnd) return;
         Debug.Log("クリックされたボタン:" + index);
 
         TextMeshProUGUI currentText = GetButtonText(index);
