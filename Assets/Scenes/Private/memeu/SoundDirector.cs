@@ -11,8 +11,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] SEClips; // SE用のAudioClip配列
     public AudioClip[] BGMClips; // BGM用のAudioClip配列
 
-    [SerializeField] AudioSource SEAudioSource;
-    [SerializeField] AudioSource BGMAudioSource;
+    [SerializeField] public AudioSource SEAudioSource;
+    [SerializeField] public AudioSource BGMAudioSource;
     
     void Awake()
     {
