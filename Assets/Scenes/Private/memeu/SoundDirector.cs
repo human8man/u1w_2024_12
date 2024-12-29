@@ -11,8 +11,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] SEClips; // SE用のAudioClip配列
     public AudioClip[] BGMClips; // BGM用のAudioClip配列
 
-    private AudioSource AudioSource;
-
+    [SerializeField] AudioSource SEAudioSource;
+    [SerializeField] AudioSource BGMAudioSource;
+    
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,29 +23,15 @@ public class SoundManager : MonoBehaviour
         }
 
         Instance = this;
-
-        // AudioSourceを取得または追加
-        AudioSource = GetComponent<AudioSource>();
-        if (AudioSource == null)
-        {
-            AudioSource = gameObject.AddComponent<AudioSource>();
-        }
     }
-
-
-    void Start()
-    {
-        AudioSource = GetComponent<AudioSource>();
-    }
-
-
+    
     // 指定したファイル名をSEClips内で探し再生.
     public void PlaySound(string fileName)
     {
         AudioClip clip = SEClips.FirstOrDefault(x => x.name == fileName);
         if (clip != null)
         {
-            AudioSource.PlayOneShot(clip);
+            SEAudioSource.PlayOneShot(clip);
         }
         else
         {
@@ -59,9 +46,9 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = BGMClips.FirstOrDefault(x => x.name == fileName);
         if (clip != null)
         {
-            AudioSource.clip = clip;
-            AudioSource.loop = true;
-            AudioSource.Play();
+            BGMAudioSource.clip = clip;
+            BGMAudioSource.loop = true;
+            BGMAudioSource.Play();
         }
         else
         {
@@ -73,9 +60,10 @@ public class SoundManager : MonoBehaviour
     // 現在再生中の音を停止.
     public void StopSound()
     {
-        if (AudioSource.isPlaying)
+        if (BGMAudioSource.isPlaying)
         {
-            AudioSource.Stop();
+            BGMAudioSource.Stop();
         }
+        
     }
 }
