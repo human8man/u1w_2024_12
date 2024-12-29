@@ -756,6 +756,14 @@ MonoBehaviour:
   _playerTransform: {fileID: 715022192}
   _wordController: {fileID: 1718016127}
   _termCountText: {fileID: 273916539}
+  _BGMIngame: {fileID: 8300000, guid: 02cb4a2c2d0426f4f81f29ece0e3f69b, type: 3}
+  _BGM1: {fileID: 8300000, guid: 678588a94f96c14469027ab99ce613e7, type: 3}
+  _BGMStage3: {fileID: 8300000, guid: c205abdca30acc94ca412e255e80eddd, type: 3}
+  _BGM3: {fileID: 8300000, guid: fdb2f54eab0cb4443849f96f4484ce8f, type: 3}
+  _BGM4: {fileID: 8300000, guid: 33d504e33b6e33c42a6a4c6cfbd937cd, type: 3}
+  _BGM5: {fileID: 8300000, guid: 629b69dc9cadd2c4eb74d561b47b5210, type: 3}
+  _BGM2: {fileID: 8300000, guid: 8b617136af51a2f4b8440b5d02b051cd, type: 3}
+  _noMusicGame: {fileID: 8300000, guid: 3a04c708bef6dcd409e7ab88ec096593, type: 3}
 --- !u!1 &123699704
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,15 @@ namespace Stage
         [SerializeField] WordController _wordController;
         [SerializeField] TextMeshProUGUI _termCountText;
 
+        [SerializeField] AudioClip _BGMIngame;
+        [SerializeField] AudioClip _BGM1;
+        [SerializeField] AudioClip _BGMStage3;
+        [SerializeField] AudioClip _BGM3;
+        [SerializeField] AudioClip _BGM4;
+        [SerializeField] AudioClip _BGM5;
+        [SerializeField] AudioClip _BGM2;
+        [SerializeField] AudioClip _noMusicGame;
+
         public StageObject[] NowStageObjects { get; private set; }
         
         void Awake()
@@ -42,34 +51,44 @@ namespace Stage
             switch (stageNum)
             {
                 case 1:
-                    SoundManager.Instance.PlayLoop("BGM_Ingame");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGMIngame;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 2:
-                    SoundManager.Instance.PlayLoop("BGM_1");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM1;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 3:
-                    SoundManager.Instance.PlayLoop("BGM_Stage3");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGMStage3;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 4:
-                    SoundManager.Instance.PlayLoop("BGM_3");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM3;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 5:
-                    SoundManager.Instance.PlayLoop("BGM_4");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM4;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 6:
-                    SoundManager.Instance.PlayLoop("BGM_5");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM5;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 7:
-                    SoundManager.Instance.PlayLoop("BGM_1");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM1;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 8:
-                    SoundManager.Instance.PlayLoop("BGM_2");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGM2;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 9:
-                    SoundManager.Instance.PlayLoop("BGM_Ingame");
+                    SoundManager.Instance.BGMAudioSource.clip = _BGMIngame;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
                 case 10:
-                    SoundManager.Instance.PlayLoop("NoMusicGame");
+                    SoundManager.Instance.BGMAudioSource.clip = _noMusicGame;
+                    SoundManager.Instance.BGMAudioSource.Play();
                     break;
             }
 
