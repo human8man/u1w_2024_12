@@ -20,8 +20,15 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+
+        // AudioSourceを取得または追加
+        AudioSource = GetComponent<AudioSource>();
+        if (AudioSource == null)
+        {
+            AudioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
 

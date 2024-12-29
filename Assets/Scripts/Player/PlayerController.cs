@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public  Rigidbody2D Rb;
-    public bool         Dead = false;   // 死亡するフラグ（true = 死亡中、false = 生存中）.
+    public Rigidbody2D Rb;
+    public bool Dead = false;   // 死亡するフラグ（true = 死亡中、false = 生存中）.
 
-    private Animator    Animator;       // アニメーション.
-    private Vector2     BeforeVel;      // 前回の移動.
+    private Animator Animator;       // アニメーション.
+    private Vector2 BeforeVel;      // 前回の移動.
 
     private const float Speed = 7.0f;   // 移動スピード.
 
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // 単語コントローラー.
     [SerializeField]
     private WordController wordController;
-    
+
     #region Stage5用の変数
 
     public enum PlayerMoveState
@@ -37,14 +37,14 @@ public class PlayerController : MonoBehaviour
         MoveOnlyStopping
     }
 
-    public PlayerMoveState NowPlayerState {get; set; } = PlayerMoveState.Normal;
+    public PlayerMoveState NowPlayerState { get; set; } = PlayerMoveState.Normal;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        Rb              = GetComponent<Rigidbody2D>();
-        Animator        = GetComponent<Animator>();
+        Rb = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         BeforeVel = Rb.velocity;
@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
     {
         // 入力の取得
         var axis = GetAxis();
-        float horizontalMove    = axis.x;
-        float verticalMove      = axis.y;
+        float horizontalMove = axis.x;
+        float verticalMove = axis.y;
 
         // 移動処理
-        Vector2 moveDirection   = new Vector2(horizontalMove, verticalMove);
+        Vector2 moveDirection = new Vector2(horizontalMove, verticalMove);
         Rb.velocity = moveDirection * Speed;
 
         // 移動による画像変更.
@@ -81,10 +81,10 @@ public class PlayerController : MonoBehaviour
     {
         // 入力の取得
         var axis = GetAxis();
-        float horizontalMove    = axis.x;
-        float verticalMove      = axis.y;
+        float horizontalMove = axis.x;
+        float verticalMove = axis.y;
 
-        Vector2 nowVel          = Rb.velocity;
+        Vector2 nowVel = Rb.velocity;
 
         if (BeforeVel == nowVel)
         {
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         Dead = true;
     }
-    
+
     // 触れた単語を取得する.
     void AddTouchedWord(StageObject obj)
     {
@@ -129,12 +129,19 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
-        if(stageObject != null)
+        if (stageObject != null)
         {
-            if(stageObject.IsDanger)
+            if (stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
-                SoundManager.Instance.PlaySound("Dead_Common");
+                if (collision.gameObject.tag == "Fire")
+                {
+                    SoundManager.Instance.PlaySound("Dead_Burnig");
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySound("Dead_Common");
+                }
                 // TODO:ここに死亡した時の処理を記述.
 
             }
@@ -150,8 +157,8 @@ public class PlayerController : MonoBehaviour
 
     Vector2 GetAxis()
     {
-        float horizontalMove    = Input.GetAxis("Horizontal");
-        float verticalMove      = Input.GetAxis("Vertical");
+        float horizontalMove = Input.GetAxis("Horizontal");
+        float verticalMove = Input.GetAxis("Vertical");
         switch (WordController.Instance.inactiveWord)
         {
             case "W":
@@ -216,10 +223,10 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlaySound("GetFlag");
         }
 
-        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();        
+        StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
         if (stageObject != null)
         {
-            if(stageObject.IsDanger)
+            if (stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
                 SoundManager.Instance.PlaySound("DeadBurnig");
