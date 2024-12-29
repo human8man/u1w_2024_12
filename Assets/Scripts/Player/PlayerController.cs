@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D Rb;
     public bool Dead = false;   // 死亡するフラグ（true = 死亡中、false = 生存中）.
-
-    private Animator Animator;       // アニメーション.
+    
     private Vector2 BeforeVel;      // 前回の移動.
 
     private const float Speed = 7.0f;   // 移動スピード.
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] StageData StageData;
 
     [SerializeField] GameObject DeadMessege;
+    [SerializeField] StageClearHandler _stageClearHandler;
 
     // スプライト.
     public Sprite SpriteIdle;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public Sprite SpriteDown;
     public Sprite SpriteLeft;
     public Sprite SpriteRight;
+    public Sprite[] DeadSprites;
 
     private SpriteRenderer SpriteRenderer;
 
@@ -40,7 +41,8 @@ public class PlayerController : MonoBehaviour
         Normal,
         CannotMove,
         MoveOnlyMoving,
-        MoveOnlyStopping
+        MoveOnlyStopping,
+        GameEnd
     }
 
     public PlayerMoveState NowPlayerState { get; set; } = PlayerMoveState.Normal;
@@ -50,7 +52,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Rb = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         BeforeVel = Rb.velocity;
@@ -59,8 +60,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (NowPlayerState == PlayerMoveState.GameEnd) {Rb.velocity = Vector2.zero; return;}
         // 死亡処理.
-        if (Dead) { Animator.SetTrigger("Dying"); }
+        if (Dead)
+        {
+            StartCoroutine(OnDead());
+        }
 
         // キー入力.
         KeyInput();
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             SpriteRenderer.sprite = SpriteIdle;     // アイドル状態.
         }
-
+        
         if (verticalMove > 0)
         {
             SpriteRenderer.sprite = SpriteUp;       // 上.
@@ -134,12 +139,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (NowPlayerState == PlayerMoveState.GameEnd) {Rb.velocity = Vector2.zero; return;}
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
         if (stageObject != null)
         {
             if (stageObject.IsDanger)
             {
                 Debug.Log("死んだ");
+                Dead = true;
                 if (collision.gameObject.CompareTag("Fire"))
                 {
                     SoundManager.Instance.PlaySound("Dead_Burnig");
@@ -222,6 +229,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (NowPlayerState == PlayerMoveState.GameEnd) {Rb.velocity = Vector2.zero; return;}
         if (collision.gameObject.CompareTag("Water"))
         {
             SoundManager.Instance.PlaySound("Move_Water");
@@ -229,10 +237,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Goal")
         {
-            SceneManager.LoadScene("StageSelect");
+            //SceneManager.LoadScene("StageSelect");
             StageData.ClearStage(StageInfo.LoadingStageNum);
             GameManager.instance.IsClear = true;
             SoundManager.Instance.PlaySound("GetFlag");
+            _stageClearHandler.OnStageClear();
         }
 
         StageObject stageObject = collision.gameObject.GetComponent<StageObject>();
@@ -243,7 +252,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("死んだ");
                 SoundManager.Instance.PlaySound("DeadBurnig");
                 // TODO:ここに死亡した時の処理を記述.
-
+                Dead = true;
                 if (DeadMessege != null) {
                     DeadMessege.gameObject.SetActive(true);
                     DeadMessege.GetComponent<FadeOut>().OnFadeInButtonClick();
@@ -255,9 +264,22 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (NowPlayerState == PlayerMoveState.GameEnd) {Rb.velocity = Vector2.zero; return;}
         if (collision.gameObject.CompareTag("Water"))
         {
             SoundManager.Instance.PlaySound("Move_Water");
         }
+    }
+
+    IEnumerator OnDead()
+    {
+        Debug.Log("OnDead");
+        NowPlayerState = PlayerMoveState.GameEnd;
+        SpriteRenderer.sprite = DeadSprites[0];
+        yield return new WaitForSeconds(0.1f);
+        SpriteRenderer.sprite = DeadSprites[1];
+        yield return new WaitForSeconds(0.1f);
+        SpriteRenderer.sprite = DeadSprites[2];
+        yield return new WaitForSeconds(0.3f);
     }
 }

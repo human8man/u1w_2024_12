@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 09f78eb50cddb1b47ab7a4c5d5c1925a
   - enabled: 1
     path: Assets/Scenes/BuildScene/Game.unity
-    guid: 44ea0dd92329a468ba54f731094e9f80
+    guid: 45f550a1a44f7ce489c0f1bc476a6152
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
@@ -23,9 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuildScene/FadeScene.unity
     guid: 25fc07f582e964377bc79037c0836591
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BuildScene/Common.unity
     guid: 9174faa1091844f648c744a046fea69d
+  - enabled: 1
+    path: Assets/Scenes/BuildScene/StageSelect.unity
+    guid: 502e3dcac303cc74baf47d2055b2a0e9
   - enabled: 1
     path: Assets/Scenes/BuildScene/Title.unity
     guid: 51eae55aa19f4481d88b74304a43d254

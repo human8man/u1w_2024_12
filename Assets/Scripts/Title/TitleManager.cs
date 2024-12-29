@@ -17,7 +17,7 @@ namespace Title
                 if (_loaded) return;
                 if (_nowTime > _transitionTime)
                 {
-                    FadeSystem.Instance.LoadScene("Game");
+                    FadeSystem.Instance.LoadScene("StageSelect");
                     _loaded = true;
                 }
             }
