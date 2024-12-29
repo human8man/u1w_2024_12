@@ -8,13 +8,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WordController : SingletonMonoBehaviour<WordController>
+public class WordControllerTitle : SingletonMonoBehaviour<WordControllerTitle>
 {
     const int BUTTON_MAX = 3; // ボタンの最大数.
 
     [SerializeField] private List<string> words; // ボタンに表示する単語リスト.
     [SerializeField] private TextMeshProUGUI nonWordText; // 非アクティブ単語をゲーム画面に表示するTextUI.
-    [SerializeField] StageLoader _stageLoader;
 
     public Button[] buttons = new Button[BUTTON_MAX]; // ボタン.
                                              
@@ -22,6 +21,7 @@ public class WordController : SingletonMonoBehaviour<WordController>
     public string inactiveWord; // 非アクティブ単語の初期値.
     private string originalText = "が無いゲーム"; // テキストフォーマット.
     private int lastClickedButtonIndex; // 最後にクリックされたボタンの番号.
+    StageObject[] _stageObjects;
 
     private void Start()
     {
@@ -34,16 +34,8 @@ public class WordController : SingletonMonoBehaviour<WordController>
 
         originalText = initInactiveWord + "が無いゲーム";
         inactiveWord = initInactiveWord;
-        StageObject[] stageObjects;
-        if (_stageLoader == null)
-        {
-            stageObjects = FindObjectsOfType<StageObject>();
-        }
-        else
-        {
-            stageObjects = _stageLoader.NowStageObjects;   
-        }
-        ToggleObjects(stageObjects, initInactiveWord, false);
+        _stageObjects = FindObjectsOfType<StageObject>(true);
+        ToggleObjects(_stageObjects, initInactiveWord, false);
     }
 
     private void Update()
@@ -73,30 +65,20 @@ public class WordController : SingletonMonoBehaviour<WordController>
             return;
         }
 
-        StageObject[] stageObjects;
-        if (_stageLoader == null)
-        {
-            stageObjects = FindObjectsOfType<StageObject>();
-        }
-        else
-        {
-            stageObjects = _stageLoader.NowStageObjects;   
-        }
-
         // 前回と今回のボタンが異なる場合.
         if (currentText.text != lastText.text)
         {
-            ToggleObjects(stageObjects, lastText.text, true);      // 前回の単語をアクティブ化.
-            ToggleObjects(stageObjects, currentText.text, false);  // 今回の単語を非アクティブ化.
+            ToggleObjects(_stageObjects, lastText.text, true);      // 前回の単語をアクティブ化.
+            ToggleObjects(_stageObjects, currentText.text, false);  // 今回の単語を非アクティブ化.
 
             inactiveWord = currentText.text;
         }
         else
         {
             // 同じボタンが再びクリックされた場合.
-            ToggleObjects(stageObjects, currentText.text, false);
-            ToggleObjects(stageObjects, initInactiveWord, false);
-            inactiveWord = IsObjectActive(stageObjects, currentText.text) ? initInactiveWord : currentText.text;
+            ToggleObjects(_stageObjects, currentText.text, false);
+            ToggleObjects(_stageObjects, initInactiveWord, false);
+            inactiveWord = IsObjectActive(_stageObjects, currentText.text) ? initInactiveWord : currentText.text;
         }
 
         // 最後にクリックされたボタンの番号を更新.
