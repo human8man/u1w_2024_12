@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadMessege
       objectReference: {fileID: 0}
+    - target: {fileID: 7575849491970264937, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -940,6 +944,11 @@ PrefabInstance:
 --- !u!224 &143607720 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6114768878993090817, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
+  m_PrefabInstance: {fileID: 143607719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &143607721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7575849491970264937, guid: 23817d614658d3a4092e8b967e02333d, type: 3}
   m_PrefabInstance: {fileID: 143607719}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &159450081
@@ -17256,6 +17265,10 @@ PrefabInstance:
       propertyPath: StageInfo
       value: 
       objectReference: {fileID: 11400000, guid: 0278ff0c481a24951b19f086a42646a0, type: 2}
+    - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
+      propertyPath: DeadMessege
+      value: 
+      objectReference: {fileID: 143607721}
     - target: {fileID: 4855871170236086876, guid: f33cf582efd9f4f9cb2b0cb7bb8d5b3e, type: 3}
       propertyPath: wordController
       value: 
