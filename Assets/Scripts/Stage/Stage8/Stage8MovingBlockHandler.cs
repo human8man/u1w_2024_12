@@ -22,7 +22,8 @@ namespace Stage.Stage8
         void Update()
         {
             if (IsMoving) _nowTime += Time.deltaTime;
-            transform.position = _startPosition + _offset * _easing.Evaluate(_nowTime / _loopTime);
+            Vector2 newPosition = _startPosition + _offset * _easing.Evaluate(_nowTime / _loopTime);
+            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
         }
     }
 }
