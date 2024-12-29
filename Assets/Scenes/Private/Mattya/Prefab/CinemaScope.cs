@@ -29,21 +29,20 @@ public class CinemaScope : MonoBehaviour
     private CanvasGroup bottomCanvasGroup;
 
     public Action OnFadeOutEnd { get; set; }
+    public Action OnFadeInEnd { get; set;}
 
     private void Start()
     {
         // 初期化処理.
         Init();
-
-        // フェードイン.
-        FadeInAndOut();
     }
 
-    async void FadeInAndOut()
+    public async void FadeInAndOut()
     {
         await OnFadeInButtonClick();
         OnFadeOutEnd?.Invoke();
         await OnFadeOutButtonClick();
+        OnFadeInEnd?.Invoke();
     }
 
     public void Init()

@@ -5,15 +5,22 @@ namespace UI
 {
     public class FadeSystem : SingletonMonoBehaviour<FadeSystem>
     {
-        string _fadeScene = "FadeScene";
+        [SerializeField] CinemaScope _cs;
         public void LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(_fadeScene, LoadSceneMode.Additive);
-            CinemaScope cs = FindObjectOfType<CinemaScope>();
-            cs.OnFadeOutEnd = () =>
+            _cs.OnFadeOutEnd = () =>
             {
-                SceneManager.LoadScene(sceneName);
+                string previousSceneName = SceneManager.GetSceneAt(0).name;
+                if (previousSceneName == "FadeScene")
+                {
+                    previousSceneName = SceneManager.GetSceneAt(1).name;
+                }
+
+                Debug.Log(previousSceneName);
+                SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
+                SceneManager.UnloadScene(previousSceneName);
             };
+            _cs.FadeInAndOut();
         }
     }
 }
