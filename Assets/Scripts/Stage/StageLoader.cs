@@ -33,7 +33,7 @@ namespace Stage
 
         public StageObject[] NowStageObjects { get; private set; }
         
-        void Awake()
+        void Start()
         {
             LoadStage(_stageInfo.LoadingStageNum);
         }
